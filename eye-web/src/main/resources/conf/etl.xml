@@ -1,0 +1,21 @@
+<!DOCTYPE etl SYSTEM "http://scriptella.javaforge.com/dtd/etl.dtd">
+<!-- dmp:  there should be no need to change this file. -->
+<etl>
+    <description>dbtools config script</description>
+    <properties>
+        <include href="client.properties"/>
+    </properties>
+
+    <connection driver="${jdbc.driver.class.name}"
+                url="${jdbc.connect.url}"
+                user="${database.user}"
+                password="${database.pass}"
+                classpath="${jdbc.driver.classpath}">
+        statement.separator=GO
+        statement.separator.singleline=true
+    </connection>
+    <script>
+        <include href="${script}"/>
+    </script>
+</etl>
+

@@ -1,0 +1,35 @@
+[
+    {
+        "menus": [
+            {
+                "name": "今日概述",
+                "active": true,
+                "url": "#/dashboard"
+            },
+            {
+                "name": "统计报表",
+                "active": false,
+                "url": "#/statistics"
+            },
+            {
+                "name": "数据分析",
+                "active": false,
+                "url": "#"
+            }
+        ]
+    },
+    {
+        "menus": [
+            {
+                "name": "项目审批",
+                "active": false,
+                "url": "#"
+            },
+            {
+                "name": "个人设置",
+                "active": false,
+                "url": "#"
+            }
+        ]
+    }
+]

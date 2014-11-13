@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="ehcache.xsd"
+    updateCheck="false" monitoring="autodetect"
+    dynamicConfig="true">
+	<!--
+	user.home – 用户主目录
+	user.dir – 用户当前工作目录
+	java.io.tmpdir – 默认临时文件路径
+     -->
+    <diskStore path="java.io.tmpdir"/>
+
+ <defaultCache
+     maxEntriesLocalHeap="100000"
+     maxEntriesLocalDisk="10000000"
+     eternal="false"
+     overflowToDisk="true"
+     timeToIdleSeconds="1800"
+     timeToLiveSeconds="0"
+     diskExpiryThreadIntervalSeconds="120"
+     memoryStoreEvictionPolicy="LRU"
+  />
+
+
+  <cache name="sessionCaching"
+	maxElementsInMemory="10000"
+	eternal="false"
+	overflowToDisk="false"
+	timeToIdleSeconds="18000"
+	memoryStoreEvictionPolicy="FIFO"
+	/>
+
+	<cache name="global"
+	 maxEntriesLocalHeap="100000"
+     maxEntriesLocalDisk="10000000"
+     eternal="false"
+     overflowToDisk="true"
+     timeToIdleSeconds="0"
+     timeToLiveSeconds="0"
+     diskExpiryThreadIntervalSeconds="120"
+     memoryStoreEvictionPolicy="LRU"
+	/>
+
+</ehcache>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="AuthenticationApp">
+<head>
+<meta charset="UTF-8">
+<title>系统智能监控平台</title>
+<link href="app/lib/bootstrap-3.2.0-dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="app/css/login.css" rel="stylesheet">
+<link href="app/css/base.css" rel="stylesheet">
+
+<script src="app/lib/angular/angular.min.js"></script>
+<script src="app/lib/angular/angular-resource.min.js"></script>
+<script src="app/authenticationApp.js"></script>
+<script src="app/services/AuthenticationServices.js"></script>
+<script src="app/controllers/AuthenticationControllers.js"></script>
+</head>
+<body ng-controller="AuthenticationController as authentication">
+	<div class="container">
+		<form ng-submit="loginform.$valid && authentication.login()"
+			novalidate class="css-form form-signin" name="loginform">
+			<h2 class="form-signin-heading">请登录</h2>
+			<input type="text" class="form-control" placeholder="登录名" required
+				autofocus ng-model="authentication.user.loginName"> <input
+				type="password" class="form-control" placeholder="密码"
+				ng-model="authentication.user.password" required>
+			<div class="checkbox">
+				<label> <input type="checkbox" value="remember-me">
+					自动登录
+				</label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">登
+				录</button>
+		</form>
+	</div>
+</body>
+</html>
