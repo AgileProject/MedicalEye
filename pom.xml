@@ -12,6 +12,7 @@
   </modules>
 
 	<properties>
+        <!--主要依赖库版本定义-->
 		<restlet.version>2.2.1</restlet.version>
 		<ehcache.version>2.8.2</ehcache.version>
 		<org.slf4j.version>1.7.6</org.slf4j.version>
@@ -20,9 +21,10 @@
 		<fast.version>0.1.0-SNAPSHOT</fast.version>
 		<druid.version>1.0.7</druid.version>
 		<eye.version>0.0.1-SNAPSHOT</eye.version>
-		<company.url>http://172.17.127.253:8081/nexus</company.url>
+		<company.url>http://10.6.12.15:8080/nexus</company.url>
 	</properties>
 
+    <!--配置私服-->
 	<repositories>
 		<repository>
 			<id>company-repo</id>
@@ -50,6 +52,7 @@
 		</pluginRepository>
 	</pluginRepositories>
 
+    <!-- 预定义的依赖项的version，scope，exclusive，子项目中只需定义groupId与 artifactId即可-->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -161,6 +164,7 @@
 		</dependencies>
 	</dependencyManagement>
 
+    <!--插件配置-->
 	<build>
 		<finalName>${project.name}-${project.version}</finalName>
 		<pluginManagement>
