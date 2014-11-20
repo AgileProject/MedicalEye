@@ -1,7 +1,6 @@
 package cn.edu.seu.eye.module.base.resource.management;
 
 import cn.edu.seu.eye.module.base.annotation.WithoutAuthentication;
-import cn.edu.seu.eye.module.base.dao.resource.IOrgEmployeeDao;
 import cn.edu.seu.eye.module.base.entity.management.User;
 import cn.edu.seu.eye.module.base.exception.NoAuthenticationException;
 import cn.edu.seu.eye.module.base.presentation.Result;
@@ -35,9 +34,6 @@ public class AuthenticationResource extends BaseResource {
 
 	@Autowired
 	private IPermission sysPermissionService;
-
-	@Autowired
-	private IOrgEmployeeDao orgEmployeeDao;
 
 	/**
 	 * 
@@ -83,9 +79,6 @@ public class AuthenticationResource extends BaseResource {
 			byte[] b = md.digest(value.toString().getBytes());
 			BASE64Encoder be = new BASE64Encoder();
 			token = be.encode(b);
-			if (sysUser.getEmployeeId() != null) {
-				LoginUserUtil.putOrgEmployee(token, orgEmployeeDao.get(sysUser.getEmployeeId()));
-			}
 			Cookie cookie = new Cookie(LoginUserUtil.TOKEN, token);
 			cookie.setPath("/");
 			response.addCookie(cookie);

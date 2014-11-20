@@ -2,10 +2,8 @@ package cn.edu.seu.eye.module.base.service.management.impl;
 
 import cn.edu.seu.eye.module.base.dao.management.IUserDao;
 import cn.edu.seu.eye.module.base.dao.management.IUserRoleDao;
-import cn.edu.seu.eye.module.base.dao.resource.IOrgEmployeeDao;
 import cn.edu.seu.eye.module.base.entity.management.User;
 import cn.edu.seu.eye.module.base.entity.management.UserRole;
-import cn.edu.seu.eye.module.base.entity.resource.OrgEmployee;
 import cn.edu.seu.eye.module.base.resource.AbstractService;
 import cn.edu.seu.eye.module.base.service.management.IUser;
 import com.iron.fast.beans.Criteria;
@@ -26,10 +24,7 @@ public class UserImpl extends AbstractService<User> implements IUser {
 
 	@Autowired
 	private IUserRoleDao userRoleDao;
-	
-	@Autowired
-	private IOrgEmployeeDao orgEmployeeDao;
-	
+
 	@Override
 	public IDao<User> getIDao() {
 		return userDao;
@@ -46,13 +41,6 @@ public class UserImpl extends AbstractService<User> implements IUser {
 		user.setId(UUID.randomUUID().toString());
 		userDao.insert(user);
 		userRoleDao.batchInsert(user.getUserRoleList());
-		if(user.getEmployeeId()!=null){
-			Criteria criteria = new Criteria();
-			criteria.add(OrgEmployee.ID, user.getEmployeeId());
-			OrgEmployee employee = orgEmployeeDao.get(criteria);
-			employee.setLoginName(user.getLoginName());
-			orgEmployeeDao.update(employee, OrgEmployee.LOGIN_NAME);
-		}
 		return user;
 	}
 	
@@ -61,9 +49,6 @@ public class UserImpl extends AbstractService<User> implements IUser {
 	public void deleteUser(Criteria criteria,Criteria criteria2) {
 		userDao.delete(criteria);
 		userRoleDao.delete(criteria2);
-		OrgEmployee employee = orgEmployeeDao.get(criteria);
-		employee.setLoginName(null);
-		orgEmployeeDao.update(employee, OrgEmployee.LOGIN_NAME);
 	}
 	
 	@Override
@@ -76,13 +61,6 @@ public class UserImpl extends AbstractService<User> implements IUser {
 				Criteria criteria1 = new Criteria();
 				criteria1.add(UserRole.LOGIN_NAME, user.getLoginName());
 				userRoleDao.delete(criteria1);
-				if(user.getEmployeeId()!=null){
-					Criteria criteria = new Criteria();
-					criteria.add(OrgEmployee.ID, user.getEmployeeId());
-					OrgEmployee employee = orgEmployeeDao.get(criteria);
-					employee.setLoginName(null);
-					orgEmployeeDao.update(employee, OrgEmployee.LOGIN_NAME);
-				}
 			}
 		}
 	}
@@ -95,12 +73,5 @@ public class UserImpl extends AbstractService<User> implements IUser {
 		userRoleDao.delete(criteria1);
 		userDao.update(user);
 		userRoleDao.batchInsert(user.getUserRoleList());
-		if(user.getEmployeeId()!=null){
-			Criteria criteria2 = new Criteria();
-			criteria2.add(OrgEmployee.ID, user.getEmployeeId());
-			OrgEmployee employee = orgEmployeeDao.get(criteria2);
-			employee.setLoginName(user.getLoginName());
-			orgEmployeeDao.update(employee, OrgEmployee.LOGIN_NAME);
-		}
 	}
 }
