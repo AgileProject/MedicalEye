@@ -56,7 +56,11 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar" ng-controller="MenuController">
 				<ul class="nav nav-sidebar" ng-repeat="homeMenu in homeMenus">
-					<li ng-class="{active:menu.active}" ng-repeat="menu in homeMenu.menus"><a href="{{menu.url}}" ng-click="selectMenu(menu)">{{menu.name}}</a></li>
+					<li ng-class="{active:menu.active}" ng-repeat="menu in homeMenu.menus">
+                        <a href="{{menu.url}}" ng-click="selectMenu(menu)">
+                            {{menu.name}}
+                        </a>
+                    </li>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view>

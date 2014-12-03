@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-@Service
+@Service("IUser")
 public class UserImpl extends AbstractService<User> implements IUser {
 
 	@Autowired

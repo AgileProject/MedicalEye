@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <h1 class="page-header">图表</h1>
 
 <div class="row placeholders">
@@ -41,6 +42,7 @@
 			<tr>
 				<th>#</th>
 				<th>帐户</th>
+                <th>密码</th>
 				<th>姓名</th>
 				<th>所属机构</th>
 				<th>状态</th>
@@ -50,6 +52,7 @@
 			<tr ng-repeat="user in users.data | filter:searchText" ng-dblclick="showDetail(user)" ng-class="{danger:user.status == 2,success:user.status == 1}">
 				<td>{{$index + 1}}</td>
 				<td>{{user.loginName}}</td>
+                <td>{{user.password}}</td>
 				<td>{{user.employeeName}}</td>
 				<td>{{user.orgName}}</td>
 				<td>{{user.status}}</td>
@@ -115,8 +118,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary">保 存</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">关
-					闭</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 			</div>
 		</div>
 	</div>

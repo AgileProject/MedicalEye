@@ -1,12 +1,5 @@
 package cn.edu.seu.eye.module.base.service.management.impl;
 
-import java.util.List;
-import java.util.UUID;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import cn.edu.seu.eye.module.base.dao.management.IRoleDao;
 import cn.edu.seu.eye.module.base.dao.management.IRolePermissionDao;
 import cn.edu.seu.eye.module.base.dao.management.IUserRoleDao;
@@ -17,9 +10,15 @@ import cn.edu.seu.eye.module.base.resource.AbstractService;
 import cn.edu.seu.eye.module.base.service.management.IRole;
 import com.iron.fast.beans.Criteria;
 import com.iron.fast.repository.IDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.UUID;
 
 @Service
-public class RoleImpl extends AbstractService<Role> implements IRole {
+public class  RoleImpl extends AbstractService<Role> implements IRole {
 
 	@Autowired
 	private IRoleDao roleDao;

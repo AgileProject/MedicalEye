@@ -26,18 +26,31 @@
 
     <!--配置私服-->
 	<repositories>
-		<repository>
-			<id>company-repo</id>
-			<name>Company Inner Repository</name>
-			<url>${company.url}/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
+	    <repository>
+            <id>company-repo</id>
+            <name>Company Inner Repository</name>
+            <url>${company.url}/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>thirdparty</id>
+            <name>thirdparty Repository</name>
+            <url>${company.url}/content/repositories/thirdparty/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
 	</repositories>
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>company-repo</id>
@@ -50,6 +63,18 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</pluginRepository>
+
+        <pluginRepository>
+            <id>thirdparty</id>
+            <name>thirdparty Repository</name>
+            <url>${company.url}/content/repositories/thirdparty/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
 	</pluginRepositories>
 
     <!-- 预定义的依赖项的version，scope，exclusive，子项目中只需定义groupId与 artifactId即可-->
