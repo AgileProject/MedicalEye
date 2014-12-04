@@ -110,6 +110,9 @@ public class Computers implements Serializable {
 		this.databaseinfo=databaseInfo;
 	}
 
+
+
+
 	public static final String ComputerID = "computerid";
 
 	public static final String ComputerName = "computername";
@@ -126,5 +129,5 @@ public class Computers implements Serializable {
 
 	public static final String databaseInfo = "databaseinfo";
 
-	public static final String[] All_FIELDS = new String[] {ComputerID, ComputerName,  ComputerIP, ComputerOS, proInfo,memInfo,disInfo, databaseInfo };
+	public static final String[] All_FIELDS = new String[] {ComputerID, ComputerName, ComputerIP, ComputerOS, proInfo, memInfo, disInfo, databaseInfo};
 }

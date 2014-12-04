@@ -3,7 +3,6 @@
 
 	app.controller('UserController', [ '$scope', 'User',
 			function($scope, User) {
-                //控制器属性
 				$scope.users = User.get();
                 //控制器方法
 				$scope.showDetail = function(user) {

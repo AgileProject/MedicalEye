@@ -36,6 +36,7 @@ public class UsersResource extends BaseResource {
 	
 	@RequestMapping("/{userName}")
 	public Result findUserInfo(@PathVariable("userName") String userName) {
+		//User sysUser = sysUserService.get(userName);
 		User sysUser = sysUserService.get(userName);
 		if (sysUser != null) {
 			return new Result(sysUser);

@@ -4,7 +4,7 @@
             {
                 "name": "今日概述",
                 "active": true,
-                "url": "#/statistics"
+                "url": "#/dashboard"
             },
             {
                 "name": "服务器性能监控",

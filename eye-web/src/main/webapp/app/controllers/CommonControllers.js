@@ -6,6 +6,7 @@
 				$scope.homeMenus = Menus.query({
 					name : "homeMenu"
 				});
+
 				$scope.selectMenu = function(menu) {
 					for ( var o in $scope.homeMenus) {
 						var menus = $scope.homeMenus[o].menus;

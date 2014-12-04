@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 (function() {
 	var app = angular.module('MenuServices', [ 'ngResource' ]);
 

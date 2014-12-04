@@ -7,7 +7,9 @@ var resourceWebRoot ="/eye/rest/";
 			 'UserControllers',
 			 'UserServices',
 			 'MenuServices',
-			 'CommonControllers'
+			 'CommonControllers',
+             'ComputersControllers',
+             'ComputersServices'
 			 ]);
 	
 	app.config([ '$routeProvider', function($routeProvider) {
@@ -15,7 +17,8 @@ var resourceWebRoot ="/eye/rest/";
 			templateUrl : 'partials/dashboard.html',
 			controller:'UserController'
 		}).when('/statistics', {
-			templateUrl : 'partials/statistics.html'
+			templateUrl : 'partials/statistics.html',
+            controller:'ComputersController'
 		}).otherwise({
 			redirectTo : '/dashboard'
 		});

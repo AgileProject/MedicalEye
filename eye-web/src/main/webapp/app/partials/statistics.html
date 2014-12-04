@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>电脑名称</th>
+            <th>IP地址</th>
+            <th>操作系统</th>
+            <th>CPU信息</th>
+            <th>内存信息</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="computer in computers.data">
+            <td>{{$index + 1}}</td>
+            <td>{{computer.computername}}</td>
+            <td>{{computer.computerip}}</td>
+            <td>{{computer.computeros}}</td>
+            <td>{{computer.proinfo}}</td>
+            <td>{{computer.meminfo}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
-</body>
-</html>
+
