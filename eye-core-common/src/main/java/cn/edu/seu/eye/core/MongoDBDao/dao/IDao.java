@@ -24,11 +24,13 @@ public interface IDao <T> {
 
     List<T> getLastNRecord(int number,String key,Object value,Object...keyValue);
 
-    List<T> getRecordAfter(Date time,Object...keyValeu);
+    List<T> getRecordAfter(Date time,Object...keyValue);
 
-    List<T> getNRecordAfter(int number,Date time,Object...keyValeu);
+    int storeNRecordToListAfter(int number,List<T> list, Date time,Object...keyValue);
 
-    List<T> getNRecordBefore(int number,Date time,Object...keyValeu);
+    List<T> getNRecordAfter(int number,Date time,Object...keyValue);
+
+    List<T> getNRecordBefore(int number,Date time,Object...keyValue);
 
 
 

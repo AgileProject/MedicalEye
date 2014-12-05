@@ -43,38 +43,6 @@ public class AbstractDao<T> implements IDao<T>{
         collection = mongoDBConnection.getCollection(mongo_db_collectionName);
     }
 
-    public String getMongo_db_address() {
-        return mongo_db_address;
-    }
-
-    public void setMongo_db_address(String mongo_db_address) {
-        this.mongo_db_address = mongo_db_address;
-    }
-
-    public int getMongo_db_port() {
-        return mongo_db_port;
-    }
-
-    public void setMongo_db_port(int mongo_db_port) {
-        this.mongo_db_port = mongo_db_port;
-    }
-
-    public String getMongo_db_dbName() {
-        return mongo_db_dbName;
-    }
-
-    public void setMongo_db_dbName(String mongo_db_dbName) {
-        this.mongo_db_dbName = mongo_db_dbName;
-    }
-
-    public String getMongo_db_collectionName() {
-        return mongo_db_collectionName;
-    }
-
-    public void setMongo_db_collectionName(String mongo_db_collectionName) {
-        this.mongo_db_collectionName = mongo_db_collectionName;
-    }
-
     private BasicDBObject entityToBasicDBObject(T t){
 
         BasicDBObject basicDBObject = null;
@@ -203,7 +171,7 @@ public class AbstractDao<T> implements IDao<T>{
             list = addEmptyEntityToList(number-cursor.count(),list);
         }else {
             cursor = collection.find(criteria).skip(cursor.count()-number)
-                    .sort(new BasicDBObject("time",1).append("_id",1));
+                    .sort(new BasicDBObject("time", 1).append("_id", 1));
         }
 
         list = readDBCursorToEntityList(cursor,list);
@@ -227,7 +195,7 @@ public class AbstractDao<T> implements IDao<T>{
         }
 
         DBCursor cursor = collection.find(criteria)
-                .sort(new BasicDBObject("time",1).append("_id",1));
+                .sort(new BasicDBObject("time", 1).append("_id", 1));
 
         list = readDBCursorToEntityList(cursor,list);
 
@@ -263,19 +231,19 @@ public class AbstractDao<T> implements IDao<T>{
     }
 
     @Override
-    public List<T> getNRecordBefore(int number, Date time, Object... keyValeue) {
+    public List<T> getNRecordBefore(int number, Date time, Object... keyValue) {
 
         List<T> list = new ArrayList<>();
 
         BasicDBObject criteria = new BasicDBObject("time",new BasicDBObject("$lte",time));
 
-        if (keyValeue.length%2 ==1)
+        if (keyValue.length%2 ==1)
         {
             System.out.println("键值对不匹配");
             return null;
         }
-        for (int i=0; i<keyValeue.length;i+=2){
-            criteria.append((String) keyValeue[i],keyValeue[i+1]);
+        for (int i=0; i<keyValue.length;i+=2){
+            criteria.append((String) keyValue[i],keyValue[i+1]);
         }
 
         DBCursor cursor = collection.find(criteria)
@@ -294,6 +262,32 @@ public class AbstractDao<T> implements IDao<T>{
         return list;
     }
 
+    @Override
+    public int storeNRecordToListAfter(int number, List<T> list, Date time, Object... keyValue) {
 
+        BasicDBObject criteria = new BasicDBObject("time",new BasicDBObject("$gt",time));
 
+        if (keyValue.length%2 ==1)
+        {
+            System.out.println("键值对不匹配");
+            return 0;
+        }
+        for (int i=0; i<keyValue.length;i+=2){
+            criteria.append((String) keyValue[i],keyValue[i+1]);
+        }
+
+        DBCursor cursor = collection.find(criteria)
+                .sort(new BasicDBObject("time", 1).append("_id", 1));
+
+        if (cursor.count()<number)
+        {
+            list = readDBCursorToEntityList(cursor,list);
+            return cursor.count();
+        }else {
+            cursor = collection.find(criteria).limit(number)
+                    .sort(new BasicDBObject("time", 1).append("_id", 1));
+            list = readDBCursorToEntityList(cursor,list);
+            return cursor.count();
+        }
+    }
 }
