@@ -1,6 +1,7 @@
 package cn.edu.seu.eye.core.MongoDBDao.dao;
 
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,9 +14,10 @@ public interface IDao <T> {
 
     int batchInsert(List<T> list);
 
-    int delete(String key,Object value,Object...keyValue);
+    int delete (String key,Object value,Object...keyValue);
 
-    int update(String ID,Object IDValue,String key,Object value,Object...keyValue);
+    int update(String criteriaKey, Object criteriaValue,
+               String setKey, Object setValue, Object... setKeyValue) ;
 
 
     List<T> get(String key,Object value,Object...keyValue);

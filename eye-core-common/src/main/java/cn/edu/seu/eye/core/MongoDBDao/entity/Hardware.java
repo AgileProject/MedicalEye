@@ -72,6 +72,7 @@ public class Hardware {
 
     @Override
     public String toString() {
+
         return "Hardware{" +
                 "computerName='" + computerName + '\'' +
                 ", time=" + time +

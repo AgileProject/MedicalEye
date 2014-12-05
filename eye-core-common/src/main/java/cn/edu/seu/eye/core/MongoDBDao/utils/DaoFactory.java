@@ -11,6 +11,7 @@ import java.lang.reflect.Constructor;
  */
 public class DaoFactory {
 
+
     public static IDao getInstance(String entityName,String dbName,String address,int port){
 
         IDao iDao = null;
@@ -22,6 +23,7 @@ public class DaoFactory {
 
         try {
             Class clazz = Class.forName(className);
+            @SuppressWarnings("unchecked")
             Constructor constructor = clazz.getConstructor(String.class,String.class,String.class,int.class);
             iDao = (IDao)constructor.newInstance(entityName,dbName,address,port);
         }catch (Exception e){

@@ -24,20 +24,6 @@ public class Computer {
         this.time = time;
     }
 
-    @Override
-    public String toString() {
-        return "Computer{" +
-                "computerName='" + computerName + '\'' +
-                ", computerIP='" + computerIP + '\'' +
-                ", computerOS='" + computerOS + '\'' +
-                ", proInfo='" + proInfo + '\'' +
-                ", memInfo='" + memInfo + '\'' +
-                ", diskInfo='" + diskInfo + '\'' +
-                ", databaseInfo='" + databaseInfo + '\'' +
-                ", time=" + time +
-                '}';
-    }
-
     public String getComputerName() {
         return computerName;
     }
@@ -92,5 +78,19 @@ public class Computer {
 
     public void setDatabaseInfo(String databaseInfo) {
         this.databaseInfo = databaseInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "computerName='" + computerName + '\'' +
+                ", computerIP='" + computerIP + '\'' +
+                ", computerOS='" + computerOS + '\'' +
+                ", proInfo='" + proInfo + '\'' +
+                ", memInfo='" + memInfo + '\'' +
+                ", diskInfo='" + diskInfo + '\'' +
+                ", databaseInfo='" + databaseInfo + '\'' +
+                ", time=" + time +
+                '}';
     }
 }

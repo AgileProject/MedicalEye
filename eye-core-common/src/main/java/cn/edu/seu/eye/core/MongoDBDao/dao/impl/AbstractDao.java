@@ -87,16 +87,64 @@ public class AbstractDao<T> implements IDao<T>{
         return basicDBObject;
     }
 
+    @SuppressWarnings("unchecked")
+    private List<T> readDBCursorToEntityList(DBCursor cursor,List<T> list){
+
+        String className = this.getClass().getName();
+        String classType = className.substring(0,className.length()-7).replaceFirst("dao.impl","entity");
+
+        while (cursor.hasNext()){
+            try {
+                Object entity = Class.forName(classType).newInstance();
+
+                list.add(
+                        (T)  EntityUtil.basicDBObjectToEntity((BasicDBObject) cursor.next(),entity)
+                );
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return list;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<T> addEmptyEntityToList(int n,List<T> list){
+
+        String className = this.getClass().getName();
+        String classType = className.substring(0,className.length()-7).replaceFirst("dao.impl","entity");
+
+        for(int i=0;i<n;i++){
+            try {
+                Object entity = Class.forName(classType).newInstance();
+                list.add((T) entity);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return list;
+    }
+
+    private BasicDBObject createKeyValues(String key, Object value, Object... keyValue){
+
+        BasicDBObject keyValues = new BasicDBObject(key,value);
+
+        if (keyValue.length%2 ==1)
+        {
+            System.out.println("键值对不匹配");
+        }
+
+        for (int i = 0; i<keyValue.length; i+=2){
+            keyValues.append((String) keyValue[i],keyValue[i+1]);
+        }
+
+        return keyValues;
+    }
+
     @Override
     public int insert(T t) {
-
-        BasicDBObject basicDBObject = null;
-
-
-
-        WriteResult writeResult = collection.insert(basicDBObject);
-
-        return writeResult.getN();
+        return collection.insert(entityToBasicDBObject(t)).getN();
     }
 
     @Override
@@ -104,49 +152,27 @@ public class AbstractDao<T> implements IDao<T>{
 
         int count = 0;
 
-        BasicDBObject basicDBObject = null;
-
         for (T t :list){
-
-            try {
-                basicDBObject = EntityUtil.entityToBasicDBObject(t);
-            }catch (IllegalAccessException e){
-                e.printStackTrace();
-            }
-
-            WriteResult writeResult = collection.insert(basicDBObject);
-            count += writeResult.getN();
-
+            count += collection.insert(entityToBasicDBObject(t)).getN();
         }
 
         return count;
     }
 
     @Override
-    public int delete(String key, Object value, Object... keyValue) {
+    public int delete(String key, Object value, Object... keyValue){
 
-        BasicDBObject criteria = new BasicDBObject(key,value);
-        for (int i = 0; i<keyValue.length; i+=2){
-            criteria.append((String) keyValue[i],keyValue[i+1]);
-        }
+        return collection.remove(createKeyValues(key,value,keyValue)).getN();
 
-        WriteResult writeResult =collection.remove(criteria);
-
-        return writeResult.getN();
     }
 
     @Override
-    public int update(String criteriaKey, Object criteriaValue, String key, Object value, Object... keyValue) {
+    public int update(String criteriaKey, Object criteriaValue,
+                      String setKey, Object setValue, Object... setKeyValue){
 
-        BasicDBObject criteria = new BasicDBObject(criteriaKey,criteriaValue);
-        BasicDBObject updataValue = new BasicDBObject(key,value);
-        for (int i = 0; i<keyValue.length;i+=2){
-            updataValue.append((String) keyValue[i],keyValue[i+1]);
-        }
+        return collection.update(new BasicDBObject(criteriaKey,criteriaValue),
+                new BasicDBObject("$set",createKeyValues(setKey,setValue,setKeyValue)),true,true).getN();
 
-        WriteResult writeResult =collection.update(criteria,new BasicDBObject("$set",updataValue),true,true);
-
-        return writeResult.getN();
     }
 
     @Override
@@ -154,30 +180,10 @@ public class AbstractDao<T> implements IDao<T>{
 
         List<T> list = new ArrayList<>();
 
-        BasicDBObject criteria = new BasicDBObject(key,value);
-        if (keyValue.length%2 ==1)
-        {
-            return null;
-        }
-        for (int i=0; i<keyValue.length;i+=2){
-            criteria.append((String) keyValue[i],keyValue[i+1]);
-        }
+        DBCursor cursor = collection.find(createKeyValues(key,value,keyValue))
+                .sort(new BasicDBObject("time",1).append("_id",1));
 
-        String className = this.getClass().getName();
-        String classType = className.substring(0,className.length()-7).replaceFirst("dao.impl","entity");
-
-
-        DBCursor cursor = collection.find(criteria).sort(new BasicDBObject("time",1).append("_id",1));
-        while (cursor.hasNext()){
-            try {
-                Object entity = Class.forName(classType).newInstance();
-                list.add(
-                         (T)  EntityUtil.basicDBObjectToEntity((BasicDBObject) cursor.next(),entity)
-                        );
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
+        list = readDBCursorToEntityList(cursor,list);
 
         return list;
     }
@@ -187,91 +193,43 @@ public class AbstractDao<T> implements IDao<T>{
 
         List<T> list = new ArrayList<>();
 
+        BasicDBObject criteria = createKeyValues(key,value,keyValue);
 
-        BasicDBObject criteria = new BasicDBObject(key,value);
-        if (keyValue.length%2 ==1)
-        {
-            return null;
-        }
-        for (int i=0; i<keyValue.length;i+=2){
-            criteria.append((String) keyValue[i],keyValue[i+1]);
-        }
-
-        String className = this.getClass().getName();
-        String classType = className.substring(0,className.length()-7).replaceFirst("dao.impl","entity");
-
-
-        DBCursor cursor = collection.find(criteria).sort(new BasicDBObject("time",1).append("_id",1));
+        DBCursor cursor = collection.find(criteria)
+                .sort(new BasicDBObject("time",1).append("_id",1));
 
         if (cursor.count()<number)
         {
-            for(int i=0;i<number-cursor.count();i++){
-                list.add(null);
-            }
-
-            for (int i=number-cursor.count();i<number;i++){
-                try {
-                    Object entity = Class.forName(classType).newInstance();
-                    list.add(
-                            (T)  EntityUtil.basicDBObjectToEntity((BasicDBObject) cursor.next(),entity)
-                    );
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
+            list = addEmptyEntityToList(number-cursor.count(),list);
+        }else {
+            cursor = collection.find(criteria).skip(cursor.count()-number)
+                    .sort(new BasicDBObject("time",1).append("_id",1));
         }
 
-
-
-        if (cursor.count()>number)
-        {
-            DBCursor cookedCursor = collection.find(criteria)
-                    .sort(new BasicDBObject("time",1).append("_id",1)).skip(cursor.count()-number);
-            for (int i=0;i<number;i++){
-                try {
-                    Object entity = Class.forName(classType).newInstance();
-                    list.add(
-                            (T)  EntityUtil.basicDBObjectToEntity((BasicDBObject) cookedCursor.next(),entity)
-                    );
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-        }
+        list = readDBCursorToEntityList(cursor,list);
 
         return list;
     }
 
     @Override
-    public List<T> getRecordAfter(Date time, Object... keyValeu) {
+    public List<T> getRecordAfter(Date time, Object... keyValue) {
 
         List<T> list = new ArrayList<>();
 
         BasicDBObject criteria = new BasicDBObject("time",new BasicDBObject("$gte",time));
-        if (keyValeu.length%2 ==1)
+
+        if (keyValue.length%2 ==1)
         {
-            return null;
+            System.out.println("键值对不匹配");
         }
-        for (int i=0; i<keyValeu.length;i+=2){
-            criteria.append((String) keyValeu[i],keyValeu[i+1]);
+        for (int i=0; i<keyValue.length;i+=2){
+            criteria.append((String) keyValue[i],keyValue[i+1]);
         }
 
+        DBCursor cursor = collection.find(criteria)
+                .sort(new BasicDBObject("time",1).append("_id",1));
 
-
-        DBCursor cursor = collection.find(criteria).sort(new BasicDBObject("time",1).append("_id",1));
-
-        String className = this.getClass().getName();
-        String classType = className.substring(0,className.length()-7).replaceFirst("dao.impl","entity");
-        while (cursor.hasNext()){
-            try {
-                Object entity = Class.forName(classType).newInstance();
-                list.add(
-                        (T)  EntityUtil.basicDBObjectToEntity((BasicDBObject) cursor.next(),entity)
-                );
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
+        list = readDBCursorToEntityList(cursor,list);
 
         return list;
     }
@@ -282,83 +240,56 @@ public class AbstractDao<T> implements IDao<T>{
         List<T> list = new ArrayList<>();
 
         BasicDBObject criteria = new BasicDBObject("time",new BasicDBObject("$gte",time));
-
-
         if (keyValeu.length%2 ==1)
         {
+            System.out.println("键值对不匹配");
             return null;
         }
         for (int i=0; i<keyValeu.length;i+=2){
             criteria.append((String) keyValeu[i],keyValeu[i+1]);
         }
 
-
-
-        DBCursor cursor = collection.find(criteria).limit(number).sort(new BasicDBObject("time", 1).append("_id", 1));
-
+        DBCursor cursor = collection.find(criteria).limit(number)
+                .sort(new BasicDBObject("time", 1).append("_id", 1));
+        list = readDBCursorToEntityList(cursor,list);
 
         if (cursor.count()<number)
         {
-            for(int i=0;i<number-cursor.count();i++){
-                list.add(null);
-            }
-
-        }
-
-        String className = this.getClass().getName();
-        String classType = className.substring(0,className.length()-7).replaceFirst("dao.impl","entity");
-        while (cursor.hasNext()){
-            try {
-                Object entity = Class.forName(classType).newInstance();
-                list.add(
-                        (T)  EntityUtil.basicDBObjectToEntity((BasicDBObject) cursor.next(),entity)
-                );
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+            list = addEmptyEntityToList(number-cursor.count(),list);
         }
 
         return list;
+
     }
 
     @Override
-    public List<T> getNRecordBefore(int number, Date time, Object... keyValeu) {
+    public List<T> getNRecordBefore(int number, Date time, Object... keyValeue) {
 
         List<T> list = new ArrayList<>();
 
         BasicDBObject criteria = new BasicDBObject("time",new BasicDBObject("$lte",time));
 
-        if (keyValeu.length%2 ==1)
+        if (keyValeue.length%2 ==1)
         {
+            System.out.println("键值对不匹配");
             return null;
         }
-        for (int i=0; i<keyValeu.length;i+=2){
-            criteria.append((String) keyValeu[i],keyValeu[i+1]);
+        for (int i=0; i<keyValeue.length;i+=2){
+            criteria.append((String) keyValeue[i],keyValeue[i+1]);
         }
 
-        DBCursor cursor = collection.find(criteria).limit(number).sort(new BasicDBObject("time", 1).append("_id", 1));
+        DBCursor cursor = collection.find(criteria)
+                .sort(new BasicDBObject("time", 1).append("_id", 1));
 
         if (cursor.count()<number)
         {
-            for(int i=0;i<number-cursor.count();i++){
-                list.add(null);
-            }
-
+            list = addEmptyEntityToList(number-cursor.count(),list);
+        }else {
+            cursor = collection.find(criteria).skip(cursor.count()-number)
+                    .sort(new BasicDBObject("time", 1).append("_id", 1));
         }
 
-        String className = this.getClass().getName();
-        String classType = className.substring(0,className.length()-7).replaceFirst("dao.impl","entity");
-        while (cursor.hasNext()){
-            try {
-                Object entity = Class.forName(classType).newInstance();
-                list.add(
-                        (T)  EntityUtil.basicDBObjectToEntity((BasicDBObject) cursor.next(),entity)
-                );
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-
+        list = readDBCursorToEntityList(cursor,list);
 
         return list;
     }
