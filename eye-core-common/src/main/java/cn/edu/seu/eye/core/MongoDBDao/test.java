@@ -13,15 +13,16 @@ import cn.edu.seu.eye.core.MongoDBDao.entity.Hardware;
 import cn.edu.seu.eye.core.MongoDBDao.utils.DaoFactory;
 
 
+import javax.xml.crypto.Data;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Date;
+import java.security.PublicKey;
+import java.util.*;
 import java.util.List;
 
 /**
  * Created by Administrator on 14-11-21.
  */
-public class hello {
+public class test {
     public static void main(String[] args){
         /* ����json-lib  ok
         SystemInfo systemInfo = new SystemInfo();
@@ -163,20 +164,115 @@ public class hello {
 //        int i = iDao.delete("type","food");
 //        System.out.println(i);
 
-        IDao iDao = DaoFactory.getInstance("computer","mydb","10.6.95.15",27017);
-        Computer computer = new Computer();
-        computer.setComputerName("this is a new computer");
-        computer.setComputerIP("192.168.1.250");
-        computer.setComputerOS("Lnix");
-        computer.setProInfo("core5");
-        computer.setMemInfo("18g");
-        computer.setDiskInfo("wd");
-        computer.setDatabaseInfo("mongodb");
-        int i = iDao.insert(computer);
-        System.out.println(i);
+//        IDao iDao = DaoFactory.getInstance("computer","mydb","10.6.95.15",27017);
+//        Computer computer = new Computer();
+//        computer.setComputerName("this is a new computer");
+//        computer.setComputerIP("192.168.1.250");
+//        computer.setComputerOS("Lnix");
+//        computer.setProInfo("core5");
+//        computer.setMemInfo("18g");
+//        computer.setDiskInfo("wd");
+//        computer.setDatabaseInfo("mongodb");
+//        int i = iDao.insert(computer);
+//        System.out.println(i);
+
+//        IDao iDao = DaoFactory.getInstance("Computer","mydb","10.6.95.15",27017);
+//        Computer computer = new Computer();
+//        computer.setComputerOS("Linux");
+//        computer.setProInfo("core5");
+//        computer.setMemInfo("18g");
+//        computer.setDiskInfo("wd");
+//        computer.setDatabaseInfo("mongodb");
+//        for (int i=0;i<100;i++){
+//            computer.setComputerName(String.valueOf(i));
+//            computer.setComputerIP("192.168.1."+String.valueOf(i));
+//            iDao.insert(computer);
+//        }
+
+//        IDao iDao = DaoFactory.getInstance("Computer","mydb","10.6.95.15",27017);
+//        List<Computer> list = new ArrayList<Computer>();
+//        for (int i=0;i<100;i++){
+//            Computer computer = new Computer();
+//            computer.setComputerName(String.valueOf(i));
+//            computer.setComputerIP("192.168.1."+String.valueOf(i));
+//            computer.setComputerOS("Linux");
+//            computer.setProInfo("core5");
+//            computer.setMemInfo("18g");
+//            computer.setDiskInfo("wd");
+//            computer.setDatabaseInfo("mongodb");
+//            list.add(computer);
+//        }
+//        iDao.batchInsert(list);
+
+//        IDao iDao =DaoFactory.getInstance("Computer","mydb","10.6.95.15",27017);
+//        Computer computer = new Computer();
+//        computer.setComputerOS("Linux");
+//        computer.setProInfo("core5");
+//        computer.setMemInfo("18g");
+//        computer.setDiskInfo("wd");
+//        computer.setDatabaseInfo("mongodb");
+//        for (int i=0;i<100;i++){
+//            computer.setComputerName(String.valueOf(i));
+//            computer.setComputerIP("192.168.1."+String.valueOf(i));
+//            iDao.insert(computer);
+//        }
+//
+//
+//
+//        new Timer().schedule(new TimerTask() {
+//            IDao hardwaredao = DaoFactory.getInstance("Hardware", "mydb", "ee-lab", 27017);
+//            Hardware hardware = new Hardware();
+//            float runtime = 0;
+//
+//            @Override
+//        public void run() {
+//            hardware.setComputerName("ee-lab");
+//            hardware.setTime(new Date());
+//            hardware.setCpuUtilization((float) (Math.random() * 100));
+//            hardware.setCpuRunTime(runtime);
+//            hardware.setProcesses((int) (Math.random() * 100));
+//            hardware.setMemUsedPercent((float) (Math.random() * 100));
+//            hardware.setDiskUtilization((float) (Math.random() * 100));
+//            runtime += 0.1;
+//
+//            System.out.println(hardware.toString());
+//
+//            hardwaredao.insert(hardware);
+//
+//        }
+//    }, 0, 1);
+//
+//        new Timer().schedule(new TimerTask() {
+//            IDao databasedao = DaoFactory.getInstance("Database","mydb","ee-lab",27017);
+//            Database database = new Database();
+//            int size = 0;
+//            @Override
+//            public void run() {
+//                database.setComputerName("ee-1");
+//                database.setDatabaseName("sqlserver");
+//                database.setTime(new Date());
+//                database.setLinkNumb((int) (Math.random()*100));
+//                database.setSize(size);
+//                database.setRamUtilization((float) (Math.random()*100));
+//
+//                size+=0.5;
+//
+//                System.out.println(database.toString());
+//
+//                databasedao.insert(database);
+//            }
+//        },0,1);
 
 
 
+        IDao iDao = DaoFactory.getInstance("Hardware","mydb","ee-lab");
+        Date date =new Date();
+        date.setHours(10);
+        date.setMinutes(46);
+        List<Hardware> list = iDao.getNRecordBefore(10,date);
+        for (Hardware hardware:list){
+            System.out.println(hardware.toString());
+        }
 
 
 

@@ -1,6 +1,7 @@
 package cn.edu.seu.eye.core.MongoDBDao.dao;
 
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,9 +18,15 @@ public interface IDao <T> {
     int update(String ID,Object IDValue,String key,Object value,Object...keyValue);
 
 
-    <T> List<T> get(String key,Object value,Object...keyValue);
+    List<T> get(String key,Object value,Object...keyValue);
 
-    <T> List<T> getLastNRecord(int number,String key,Object value,Object...keyValue);
+    List<T> getLastNRecord(int number,String key,Object value,Object...keyValue);
+
+    List<T> getRecordAfter(Date time,Object...keyValeu);
+
+    List<T> getNRecordAfter(int number,Date time,Object...keyValeu);
+
+    List<T> getNRecordBefore(int number,Date time,Object...keyValeu);
 
 
 

@@ -12,52 +12,31 @@ import java.net.UnknownHostException;
  */
 public class MongoDBConnection {
 
-    private static MongoClient mongoClient = null;
-    private static DB db = null;
-    private static DBCollection collection= null;
+    private String mongo_db_address = "ee-lab";
+    private int mongo_db_port = 27017;
+    private String mongo_db_dbname = "mydb";
 
-    private static  String MONGODB_DB_ADDRESS = "ee-lab";
-    private static  int MONGO_DB_PORT = 27017;
+    private MongoClient mongoClient = null;
+    private DB db = null;
+    private DBCollection collection= null;
 
-    public static String getMONGODB_DB_ADDRESS() {
-        return MONGODB_DB_ADDRESS;
-    }
+    public MongoDBConnection(String mongo_db_address,int mongo_db_port,String mongo_db_dbname) {
 
-    public static void setMONGODB_DB_ADDRESS(String MONGODB_DB_ADDRESS) {
-        MongoDBConnection.MONGODB_DB_ADDRESS = MONGODB_DB_ADDRESS;
-    }
+        this.mongo_db_address = mongo_db_address;
+        this.mongo_db_port =mongo_db_port;
+        this.mongo_db_dbname = mongo_db_dbname;
 
-    public static int getMONGO_DB_PORT() {
-        return MONGO_DB_PORT;
-    }
-
-    public static void setMONGO_DB_PORT(int MONGO_DB_PORT) {
-        MongoDBConnection.MONGO_DB_PORT = MONGO_DB_PORT;
-    }
-
-    public static String getMONGO_DB_DBNAME() {
-        return MONGO_DB_DBNAME;
-    }
-
-    public static void setMONGO_DB_DBNAME(String MONGO_DB_DBNAME) {
-        MongoDBConnection.MONGO_DB_DBNAME = MONGO_DB_DBNAME;
-    }
-
-    private static String MONGO_DB_PASSWORD = "root";
-    private static String MONGO_DB_DBNAME = "mydb";
-
-    static{
         try {
-            mongoClient = new MongoClient(MONGODB_DB_ADDRESS,MONGO_DB_PORT);
-        }catch(UnknownHostException e){
+            this.mongoClient = new MongoClient(mongo_db_address,mongo_db_port);
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public static MongoClient getMongoClient(){
+    public MongoClient getMongoClient(){
         if(mongoClient ==null){
             try {
-                mongoClient = new MongoClient(MONGODB_DB_ADDRESS,MONGO_DB_PORT);
+                mongoClient = new MongoClient(mongo_db_address,mongo_db_port);
             }catch(UnknownHostException e){
                 e.printStackTrace();
             }
@@ -65,20 +44,21 @@ public class MongoDBConnection {
         return mongoClient;
     }
 
-    public static DB getDB(){
+    public  DB getDB(){
         if (db == null)
         {
             if (mongoClient == null)
             {
                 getMongoClient();
             }
-            db = mongoClient.getDB(MONGO_DB_DBNAME);
+
+            db = mongoClient.getDB(mongo_db_dbname);
 
         }
         return db;
     }
 
-    public static DBCollection getCollection(String collectionName){
+    public DBCollection getCollection(String collectionName){
         if (collection == null)
         {
             if (db == null)

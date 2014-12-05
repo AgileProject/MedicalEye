@@ -10,10 +10,9 @@ import java.lang.reflect.Constructor;
  * Created by Administrator on 14-12-2.
  */
 public class DaoFactory {
+
     public static IDao getInstance(String entityName,String dbName,String address,int port){
 
-        Class clazz = null;
-        Constructor constructor = null;
         IDao iDao = null;
 
         String classPath = (new AbstractDao<Computer>()).getClass().getName();
@@ -22,14 +21,18 @@ public class DaoFactory {
         String className = classPath+entityName+"DaoImpl";
 
         try {
-            clazz = Class.forName(className);
-            constructor = clazz.getConstructor(String.class,String.class,String.class,int.class);
+            Class clazz = Class.forName(className);
+            Constructor constructor = clazz.getConstructor(String.class,String.class,String.class,int.class);
             iDao = (IDao)constructor.newInstance(entityName,dbName,address,port);
         }catch (Exception e){
             e.printStackTrace();
         }
 
         return iDao;
+    }
+
+    public static IDao getInstance(String entityName,String dbName,String address){
+        return getInstance(entityName,dbName,address,27017);
     }
 
 }

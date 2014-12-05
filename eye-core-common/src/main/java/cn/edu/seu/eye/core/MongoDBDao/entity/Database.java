@@ -13,6 +13,18 @@ public class Database {
     private int size;
     private float ramUtilization;
 
+    @Override
+    public String toString() {
+        return "Database{" +
+                "computerName='" + computerName + '\'' +
+                ", databaseName='" + databaseName + '\'' +
+                ", time=" + time +
+                ", linkNumb=" + linkNumb +
+                ", size=" + size +
+                ", ramUtilization=" + ramUtilization +
+                '}';
+    }
+
     public String getComputerName() {
         return computerName;
     }

@@ -1,23 +1,13 @@
 package cn.edu.seu.eye.core.MongoDBDao.dao.impl;
 
 import cn.edu.seu.eye.core.MongoDBDao.dao.IDao;
+import cn.edu.seu.eye.core.MongoDBDao.dao.IHardwareDao;
 import cn.edu.seu.eye.core.MongoDBDao.entity.Hardware;
 
 /**
  * Created by Administrator on 14-12-1.
  */
-public class HardwareDaoImpl extends AbstractDao<Hardware> implements IDao<Hardware>{
-    public HardwareDaoImpl(String mongo_db_collectionName) {
-        super(mongo_db_collectionName);
-    }
-
-    public HardwareDaoImpl(String mongo_db_collectionName, String mongo_db_address) {
-        super(mongo_db_collectionName, mongo_db_address);
-    }
-
-    public HardwareDaoImpl(String mongo_db_collectionName, String mongo_db_address, int mongo_db_port) {
-        super(mongo_db_collectionName, mongo_db_address, mongo_db_port);
-    }
+public class HardwareDaoImpl extends AbstractDao<Hardware> implements IHardwareDao{
 
     public HardwareDaoImpl(String mongo_db_collectionName, String mongo_db_dbName, String mongo_db_address, int mongo_db_port) {
         super(mongo_db_collectionName, mongo_db_dbName, mongo_db_address, mongo_db_port);

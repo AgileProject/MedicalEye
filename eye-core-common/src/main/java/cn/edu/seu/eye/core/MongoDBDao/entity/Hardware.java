@@ -69,4 +69,17 @@ public class Hardware {
     public void setDiskUtilization(float diskUtilization) {
         this.diskUtilization = diskUtilization;
     }
+
+    @Override
+    public String toString() {
+        return "Hardware{" +
+                "computerName='" + computerName + '\'' +
+                ", time=" + time +
+                ", cpuUtilization=" + cpuUtilization +
+                ", cpuRunTime=" + cpuRunTime +
+                ", processes=" + processes +
+                ", memUsedPercent=" + memUsedPercent +
+                ", diskUtilization=" + diskUtilization +
+                '}';
+    }
 }

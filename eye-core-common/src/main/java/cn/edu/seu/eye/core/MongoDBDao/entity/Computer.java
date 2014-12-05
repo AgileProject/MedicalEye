@@ -1,6 +1,7 @@
 package cn.edu.seu.eye.core.MongoDBDao.entity;
 
 import java.util.Date;
+import java.util.Timer;
 
 /**
  * Created by Administrator on 14-12-1.
@@ -13,6 +14,29 @@ public class Computer {
     private String memInfo;
     private String diskInfo;
     private String databaseInfo;
+    private Date time;
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "computerName='" + computerName + '\'' +
+                ", computerIP='" + computerIP + '\'' +
+                ", computerOS='" + computerOS + '\'' +
+                ", proInfo='" + proInfo + '\'' +
+                ", memInfo='" + memInfo + '\'' +
+                ", diskInfo='" + diskInfo + '\'' +
+                ", databaseInfo='" + databaseInfo + '\'' +
+                ", time=" + time +
+                '}';
+    }
 
     public String getComputerName() {
         return computerName;
