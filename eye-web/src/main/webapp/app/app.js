@@ -6,6 +6,8 @@ var resourceWebRoot ="/eye/rest/";
 			 'ngRoute',
 			 'UserControllers',
 			 'UserServices',
+             'ComputerControllers',
+             'ComputerServices',
 			 'MenuServices',
 			 'CommonControllers'
 			 ]);
@@ -15,7 +17,8 @@ var resourceWebRoot ="/eye/rest/";
 			templateUrl : 'partials/dashboard.html',
 			controller:'UserController'
 		}).when('/statistics', {
-			templateUrl : 'partials/statistics.html'
+			templateUrl : 'partials/statistics.html',
+            controller:'ComputerController'
 		}).otherwise({
 			redirectTo : '/dashboard'
 		});
