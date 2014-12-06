@@ -30,9 +30,6 @@ public interface IDao <T> {
 
     List<T> getNRecordAfter(int number,Date time,Object...keyValue);
 
-    List<T> getNRecordBefore(int number,Date time,Object...keyValue);
-
-
 
 
 

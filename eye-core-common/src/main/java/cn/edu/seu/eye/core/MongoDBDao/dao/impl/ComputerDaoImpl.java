@@ -20,4 +20,6 @@ public class ComputerDaoImpl extends AbstractDao<Computer> implements IComputerD
         return get("computerName",computerName);
 
     }
+
+
 }
