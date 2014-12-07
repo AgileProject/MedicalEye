@@ -6,6 +6,7 @@ import cn.edu.seu.eye.core.MongoDBDao.entity.Computer;
 import cn.edu.seu.eye.core.MongoDBDao.entity.Database;
 import cn.edu.seu.eye.core.MongoDBDao.entity.Hardware;
 import cn.edu.seu.eye.core.MongoDBDao.utils.DaoFactory;
+import cn.edu.seu.eye.core.MongoDBDao.utils.MongoDBUtils;
 import org.apache.commons.collections.map.StaticBucketMap;
 import cn.edu.seu.eye.core.MongoDBDao.dao.IDatabaseDao;
 
@@ -448,16 +449,33 @@ public class test {
 //            },0,100);
 //        }
 
-        IDatabaseDao databasedao = (IDatabaseDao)DaoFactory.getInstance("Database","mydb","ee-lab");
-        List<Database> list = new ArrayList<>();
-        Date date =new Date(0L);
+//        IDatabaseDao databasedao = (IDatabaseDao)DaoFactory.getInstance("Database","mydb","ee-lab");
+//        List<Database> list = new ArrayList<>();
+//        Date date =new Date(0L);
+//
+//        for (int i = 0;i<10;i++){
+//            databasedao.storeNRecordToListAfterLastQuery(10,list);
+//            for (Database database:list){
+//                System.out.println(database);
+//            }
+//        }
 
-        for (int i = 0;i<10;i++){
-            databasedao.storeNRecordToListAfterLastQuery(10,list);
-            for (Database database:list){
-                System.out.println(database);
-            }
-        }
+//        String testjson = "{\"computerName\":\"newcomputername\",\"computerIP\":\"192.168.1.1\"," +
+//                "\"computerOS\":\"windows\",\"proInfo\":\"core2\",\"memInfo\":\"2g\"," +
+//                "\"diskInfo\":\"128t\",\"dbInfo\":\"sqlserver\",\"time\":\"1417835566921\"," +
+//                "\"linkNumb\":\"123\",\"size\":\"45\",\"ramUtilization\":\"7.89\"," +
+//                "\"cpuUtilization\":\"78.5\",\"cpuRunTime\":\"44.5\",\"process\":\"44\"," +
+//                "\"memUsedPercent\":\"78.4\",\"diskUtilization\":\"47.7\"}" ;
+
+
+        String testjson = "{\"computerName\":\"newcomputername\",\"computerIP\":\"\"," +
+                "\"computerOS\":\"windows\",\"proInfo\":\"core2\",\"memInfo\":\"2g\"," +
+                "\"diskInfo\":\"128t\",\"dbInfo\":\"\",\"time\":\"1417835566921\"," +
+                "\"linkNumb\":\"123\",\"size\":\"45\",\"ramUtilization\":\"7.89\"," +
+                "\"cpuUtilization\":\"78.5\",\"cpuRunTime\":\"44.5\",\"process\":\"44\"," +
+                "\"memUsedPercent\":\"78.4\",\"diskUtilization\":\"\"}" ;
+
+        MongoDBUtils.insertIntoMongoDB(testjson);
 
 
     }

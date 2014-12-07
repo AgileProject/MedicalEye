@@ -13,7 +13,7 @@ public class Computer {
     private String proInfo;
     private String memInfo;
     private String diskInfo;
-    private String databaseInfo;
+    private String dbInfo;
     private Date time;
 
     public Date getTime() {
@@ -72,12 +72,12 @@ public class Computer {
         this.diskInfo = diskInfo;
     }
 
-    public String getDatabaseInfo() {
-        return databaseInfo;
+    public String getDbInfo() {
+        return dbInfo;
     }
 
-    public void setDatabaseInfo(String databaseInfo) {
-        this.databaseInfo = databaseInfo;
+    public void setDbInfo(String dbInfo) {
+        this.dbInfo = dbInfo;
     }
 
     @Override
@@ -89,7 +89,7 @@ public class Computer {
                 ", proInfo='" + proInfo + '\'' +
                 ", memInfo='" + memInfo + '\'' +
                 ", diskInfo='" + diskInfo + '\'' +
-                ", databaseInfo='" + databaseInfo + '\'' +
+                ", databaseInfo='" + dbInfo + '\'' +
                 ", time=" + time +
                 '}';
     }

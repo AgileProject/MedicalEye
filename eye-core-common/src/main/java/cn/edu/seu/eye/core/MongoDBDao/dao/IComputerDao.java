@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface IComputerDao extends IDao<Computer> {
     List<Computer> getAllComputers(String computerName);
+
+    int insert(Computer computer);
 }

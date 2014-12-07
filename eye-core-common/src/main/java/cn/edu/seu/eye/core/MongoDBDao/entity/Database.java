@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class Database {
     private String computerName;
-    private String databaseName;
+    private String dbInfo;
     private Date time;
     private int linkNumb;
     private int size;
@@ -17,7 +17,7 @@ public class Database {
     public String toString() {
         return "Database{" +
                 "computerName='" + computerName + '\'' +
-                ", databaseName='" + databaseName + '\'' +
+                ", databaseName='" + dbInfo + '\'' +
                 ", time=" + time +
                 ", linkNumb=" + linkNumb +
                 ", size=" + size +
@@ -33,12 +33,12 @@ public class Database {
         this.computerName = computerName;
     }
 
-    public String getDatabaseName() {
-        return databaseName;
+    public String getDbInfo() {
+        return dbInfo;
     }
 
-    public void setDatabaseName(String databaseName) {
-        this.databaseName = databaseName;
+    public void setDbInfo(String dbInfo) {
+        this.dbInfo = dbInfo;
     }
 
     public Date getTime() {

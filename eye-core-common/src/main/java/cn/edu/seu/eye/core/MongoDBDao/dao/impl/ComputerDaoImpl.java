@@ -21,5 +21,18 @@ public class ComputerDaoImpl extends AbstractDao<Computer> implements IComputerD
 
     }
 
+    @Override
+    public int insert(Computer computer) {
+        super.update("computerName",computer.getComputerName(),
+                "computerIP",computer.getComputerIP(),
+                "computerOS",computer.getComputerOS(),
+                "proInfo",computer.getProInfo(),
+                "memInfo",computer.getMemInfo(),
+                "diskInfo",computer.getDiskInfo(),
+                "dbInfo",computer.getDbInfo(),
+                "time",computer.getTime()
+        );
 
+        return 0;
+    }
 }

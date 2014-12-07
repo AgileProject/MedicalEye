@@ -40,13 +40,13 @@ public class MongoDBUtils {
 
 
         if ( computer != null){
-            while ( (computerDao.insert( computer)) != 1){}
+            computerDao.insert(computer);
         }
         if ( database != null){
-            while ( (databaseDao.insert( database)) != 1){}
+            databaseDao.insert(database);
         }
         if ( hardware != null){
-            while ( (hardwareDao.insert( hardware)) != 1){}
+            hardwareDao.insert(hardware);
         }
 
         return 0;
@@ -59,9 +59,9 @@ public class MongoDBUtils {
         if(jsonObject.getString("computerIP").equals("")){return null;}
         if(jsonObject.getString("computerOS").equals("")){return null;}
         if(jsonObject.getString("proInfo").equals("")){return null;}
-        if(jsonObject.getString("menInfo").equals("")){return null;}
+        if(jsonObject.getString("memInfo").equals("")){return null;}
         if(jsonObject.getString("diskInfo").equals("")){return null;}
-        if(jsonObject.getString("databaseInfo").equals("")){return null;}
+        if(jsonObject.getString("dbInfo").equals("")){return null;}
         if(jsonObject.getString("time").equals("")){return null;}
 
         Computer computer = new Computer();
@@ -72,8 +72,8 @@ public class MongoDBUtils {
         computer.setProInfo(jsonObject.getString("proInfo"));
         computer.setMemInfo(jsonObject.getString("memInfo"));
         computer.setDiskInfo(jsonObject.getString("diskInfo"));
-        computer.setDatabaseInfo(jsonObject.getString("databaseInfo"));
-        computer.setTime(new Date(Long.parseLong(jsonObject.getString("hdTime"))));
+        computer.setDbInfo(jsonObject.getString("dbInfo"));
+        computer.setTime(new Date(Long.parseLong(jsonObject.getString("time"))));
 
         return computer;
 
@@ -82,7 +82,7 @@ public class MongoDBUtils {
     private static Database getDatabase(JSONObject jsonObject){
 
         if (jsonObject.getString("computerName").equals("")){return null;}
-        if (jsonObject.getString("databaseName").equals("")){return null;}
+        if (jsonObject.getString("dbInfo").equals("")){return null;}
         if (jsonObject.getString("time").equals("")){return null;}
         if (jsonObject.getString("linkNumb").equals("")){return null;}
         if (jsonObject.getString("size").equals("")){return null;}
@@ -91,7 +91,7 @@ public class MongoDBUtils {
         Database database = new Database();
 
         database.setComputerName(jsonObject.getString("computerName"));
-        database.setDatabaseName(jsonObject.getString("databaseName"));
+        database.setDbInfo(jsonObject.getString("dbInfo"));
         database.setTime(new Date(Long.parseLong(jsonObject.getString("time"))));
         database.setLinkNumb(Integer.parseInt(jsonObject.getString("linkNumb")));
         database.setSize(Integer.parseInt(jsonObject.getString("size")));
