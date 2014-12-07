@@ -1,4 +1,4 @@
-package cn.edu.seu.eye.core.Httpserver;
+package cn.edu.seu.eye.core.MongoDBDao.utils;
 
 import cn.edu.seu.eye.core.MongoDBDao.dao.IComputerDao;
 import cn.edu.seu.eye.core.MongoDBDao.dao.IDao;
@@ -29,83 +29,40 @@ public class MongoDBUtils {
     private static IHardwareDao hardwareDao =
             (IHardwareDao) DaoFactory.getInstance("Hardware","jsontest","ee-lab");
 
+    @SuppressWarnings("all")
     public static int insertIntoMongoDB(String data){
 
         JSONObject jsonObject = JSONObject.fromObject(data);
 
-        int computerInsertFlag = checkComputerEmpty(jsonObject);
-        int databaseInsertFlag = checkDatabaseEmpty(jsonObject);
-        int hardwareInsertFlag = checkHardwareEmpty(jsonObject);
+        Computer computer = getComputer(jsonObject);
+        Database database = getDatabase(jsonObject);
+        Hardware hardware = getHardware(jsonObject);
 
-        List<Object> list = jsonParse(jsonObject);
 
-        if (computerInsertFlag == 1){
-            while ( (computerDao.insert( (Computer) list.get(0))) != 1){}
+        if ( computer != null){
+            while ( (computerDao.insert( computer)) != 1){}
         }
-        if (databaseInsertFlag == 1){
-            while ( (databaseDao.insert( (Database) list.get(1))) != 1){}
+        if ( database != null){
+            while ( (databaseDao.insert( database)) != 1){}
         }
-        if (hardwareInsertFlag == 1){
-            while ( (hardwareDao.insert( (Hardware) list.get(2))) != 1){}
+        if ( hardware != null){
+            while ( (hardwareDao.insert( hardware)) != 1){}
         }
 
         return 0;
     }
 
 
+    private static Computer getComputer(JSONObject jsonObject){
 
-    public static int checkComputerEmpty(JSONObject jsonObject){
-
-        if(jsonObject.getString("computerName").equals("")){return 0;}
-        if(jsonObject.getString("computerIP").equals("")){return 0;}
-        if(jsonObject.getString("computerOS").equals("")){return 0;}
-        if(jsonObject.getString("proInfo").equals("")){return 0;}
-        if(jsonObject.getString("menInfo").equals("")){return 0;}
-        if(jsonObject.getString("diskInfo").equals("")){return 0;}
-        if(jsonObject.getString("databaseInfo").equals("")){return 0;}
-        if(jsonObject.getString("time").equals("")){return 0;}
-
-        return 1;
-    }
-
-    public static int checkDatabaseEmpty(JSONObject jsonObject){
-
-        if (jsonObject.getString("computerName").equals("")){return 0;}
-        if (jsonObject.getString("databaseName").equals("")){return 0;}
-        if (jsonObject.getString("time").equals("")){return 0;}
-        if (jsonObject.getString("linkNumb").equals("")){return 0;}
-        if (jsonObject.getString("size").equals("")){return 0;}
-        if (jsonObject.getString("ramUtilization").equals("")){return 0;}
-
-        return 1;
-    }
-
-    public static int checkHardwareEmpty(JSONObject jsonObject){
-
-        if (jsonObject.getString("computerName").equals("")){return 0;}
-        if (jsonObject.getString("time").equals("")){return 0;}
-        if (jsonObject.getString("cpuUtilization").equals("")){return 0;}
-        if (jsonObject.getString("cpuRunTime").equals("")){return 0;}
-        if (jsonObject.getString("process").equals("")){return 0;}
-        if (jsonObject.getString("memUsedPercent").equals("")){return 0;}
-        if (jsonObject.getString("diskUtilization").equals("")){return 0;}
-
-        return 1;
-    }
-
-
-    public static List<Object> jsonParse(JSONObject jsonObject){
-
-        List<Object> list = new ArrayList<>();
-
-        list.add(getComputer(jsonObject));
-        list.add(getDatabase(jsonObject));
-        list.add(getHardware(jsonObject));
-
-        return list;
-    }
-
-    public static Computer getComputer(JSONObject jsonObject){
+        if(jsonObject.getString("computerName").equals("")){return null;}
+        if(jsonObject.getString("computerIP").equals("")){return null;}
+        if(jsonObject.getString("computerOS").equals("")){return null;}
+        if(jsonObject.getString("proInfo").equals("")){return null;}
+        if(jsonObject.getString("menInfo").equals("")){return null;}
+        if(jsonObject.getString("diskInfo").equals("")){return null;}
+        if(jsonObject.getString("databaseInfo").equals("")){return null;}
+        if(jsonObject.getString("time").equals("")){return null;}
 
         Computer computer = new Computer();
 
@@ -122,7 +79,14 @@ public class MongoDBUtils {
 
     }
 
-    public static Database getDatabase(JSONObject jsonObject){
+    private static Database getDatabase(JSONObject jsonObject){
+
+        if (jsonObject.getString("computerName").equals("")){return null;}
+        if (jsonObject.getString("databaseName").equals("")){return null;}
+        if (jsonObject.getString("time").equals("")){return null;}
+        if (jsonObject.getString("linkNumb").equals("")){return null;}
+        if (jsonObject.getString("size").equals("")){return null;}
+        if (jsonObject.getString("ramUtilization").equals("")){return null;}
 
         Database database = new Database();
 
@@ -136,7 +100,15 @@ public class MongoDBUtils {
         return database;
     }
 
-    public static Hardware getHardware(JSONObject jsonObject){
+    private static Hardware getHardware(JSONObject jsonObject){
+
+        if (jsonObject.getString("computerName").equals("")){return null;}
+        if (jsonObject.getString("time").equals("")){return null;}
+        if (jsonObject.getString("cpuUtilization").equals("")){return null;}
+        if (jsonObject.getString("cpuRunTime").equals("")){return null;}
+        if (jsonObject.getString("process").equals("")){return null;}
+        if (jsonObject.getString("memUsedPercent").equals("")){return null;}
+        if (jsonObject.getString("diskUtilization").equals("")){return null;}
 
         Hardware hardware = new Hardware();
 
