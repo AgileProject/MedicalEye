@@ -28,7 +28,9 @@ public class DatabaseDaoImpl extends AbstractDao<Database> implements IDatabaseD
 
             list = readDBCursorToEntityList(cursor,list);
 
-            this.lastQueryTime = (list.get(cursor.size()-1)).getTime();
+            if (list.size() != 0){
+                this.lastQueryTime = (list.get(cursor.size()-1)).getTime();
+            }
 
             return cursor.size();
 

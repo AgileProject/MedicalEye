@@ -1,6 +1,5 @@
 package cn.edu.seu.eye.core.MongoDBDao.dao.impl;
 
-import cn.edu.seu.eye.core.MongoDBDao.entity.Database;
 import com.mongodb.*;
 import cn.edu.seu.eye.core.MongoDBDao.dao.IDao;
 import cn.edu.seu.eye.core.MongoDBDao.utils.MongoDBConnection;
@@ -79,7 +78,7 @@ public class AbstractDao<T> implements IDao<T>{
     }
 
     @SuppressWarnings("unchecked")
-    protected List<T> addEmptyEntityToList(int n,List<T> list){
+    protected List<T> storeEmptyEntityToList(int n,List<T> list){
 
         String className = this.getClass().getName();
         String classType = className.substring(0,className.length()-7).replaceFirst("dao.impl","entity");
@@ -124,10 +123,8 @@ public class AbstractDao<T> implements IDao<T>{
             criteria.append((String) keyValue[i],keyValue[i+1]);
         }
 
-        DBCursor cursor = collection.find(criteria).limit(number)
+        return collection.find(criteria).limit(number)
                 .sort(new BasicDBObject("_id", 1));
-
-        return cursor;
     }
 
     @Override
@@ -188,7 +185,7 @@ public class AbstractDao<T> implements IDao<T>{
 
         if (cursor.count()<number)
         {
-            list = addEmptyEntityToList(number-cursor.count(),list);
+            list = storeEmptyEntityToList(number-cursor.count(),list);
         }else {
             cursor = collection.find(criteria).skip(cursor.count()-number)
                     .sort(new BasicDBObject("_id", 1));
@@ -222,7 +219,7 @@ public class AbstractDao<T> implements IDao<T>{
 
         if (cursor.count()<number)
         {
-            list = addEmptyEntityToList(number-cursor.count(),list);
+            list = storeEmptyEntityToList(number-cursor.count(),list);
         }
 
         return list;
@@ -234,19 +231,7 @@ public class AbstractDao<T> implements IDao<T>{
 
         this.lastQueryTime = time;
 
-        BasicDBObject criteria = new BasicDBObject("time",new BasicDBObject("$gt",time));
-
-        if (keyValue.length%2 ==1)
-        {
-            System.out.println("键值对不匹配");
-            return 0;
-        }
-        for (int i=0; i<keyValue.length;i+=2){
-            criteria.append((String) keyValue[i],keyValue[i+1]);
-        }
-
-        DBCursor cursor = collection.find(criteria).limit(number)
-                .sort(new BasicDBObject("_id", 1));
+        DBCursor cursor = returnTimeQueryCursor(number,"gt",this.lastQueryTime,keyValue);
 
         list.clear();
 

@@ -10,7 +10,7 @@ public class Hardware {
     private Date time;
     private float cpuUtilization;
     private float cpuRunTime;
-    private int processes;
+    private int process;
     private float memUsedPercent;
     private float diskUtilization;
 
@@ -46,12 +46,12 @@ public class Hardware {
         this.cpuRunTime = cpuRunTime;
     }
 
-    public int getProcesses() {
-        return processes;
+    public int getProcess() {
+        return process;
     }
 
-    public void setProcesses(int processes) {
-        this.processes = processes;
+    public void setProcess(int process) {
+        this.process = process;
     }
 
     public float getMemUsedPercent() {
@@ -78,7 +78,7 @@ public class Hardware {
                 ", time=" + time +
                 ", cpuUtilization=" + cpuUtilization +
                 ", cpuRunTime=" + cpuRunTime +
-                ", processes=" + processes +
+                ", processes=" + process +
                 ", memUsedPercent=" + memUsedPercent +
                 ", diskUtilization=" + diskUtilization +
                 '}';
