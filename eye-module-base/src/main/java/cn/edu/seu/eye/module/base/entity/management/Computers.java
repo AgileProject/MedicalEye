@@ -22,112 +22,112 @@ public class Computers implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "ComputerID" , columnDefinition = "Integer|ComputerID", length = 4, nullable = false)
-	private Integer computerid;
+	@Column(name = "COMPUTER_ID", columnDefinition = "Integer|COMPUTER_ID", length = 4, nullable = false)
+	private Integer computerId;
 
-	@Column(name = "ComputerName",columnDefinition = "VARCHAR2|主机名",length = 20,nullable = false)
-	private String computername;
+	@Column(name = "COMPUTER_NAME", columnDefinition = "VARCHAR2|主机名", length = 20, nullable = false)
+	private String computerName;
 
-	@Column(name = "ComputerIP",columnDefinition = "VARCHAR2|IP地址",length = 20,nullable = false)
-	private String computerip;
+	@Column(name = "COMPUTER_IP", columnDefinition = "VARCHAR2|IP地址", length = 20, nullable = false)
+	private String computerIp;
 
-	@Column(name = "ComputerOS",columnDefinition = "VARCHAR2|操作系统",length = 30,nullable = true)
-	private String computeros;
+	@Column(name = "COMPUTER_OS", columnDefinition = "VARCHAR2|操作系统", length = 30, nullable = true)
+	private String computerOs;
 
-	@Column(name = "proInfo",columnDefinition = "VARCHAR2|CPU信息",length = 50,nullable = true)
-	private String proinfo;
+	@Column(name = "COMPUTER_CPU", columnDefinition = "VARCHAR2|CPU信息", length = 50, nullable = true)
+	private String computerCpu;
 
-	@Column(name = "memInfo",columnDefinition = "VARCHAR2|内存信息",length = 50,nullable = true)
-	private String meminfo;
+	@Column(name = "COMPUTER_RAM", columnDefinition = "VARCHAR2|内存信息", length = 50, nullable = true)
+	private String computerRam;
 
-	@Column(name = "disInfo",columnDefinition = "VARCHAR2|硬盘信息",length = 50,nullable = true)
-	private String disinfo;
+	@Column(name = "COMPUTER_DISK", columnDefinition = "VARCHAR2|硬盘信息", length = 50, nullable = true)
+	private String computerDisk;
 
-	@Column(name = "databaseInfo",columnDefinition = "VARCHAR2|数据库信息",length = 20,nullable = true)
-	private String databaseinfo;
+	@Column(name = "COMPURER_DB", columnDefinition = "VARCHAR2|数据库信息", length = 20, nullable = true)
+	private String computerDb;
 
-	public Integer getComputerID() {
-		return this.computerid;
+
+	public Integer getComputerId() {
+		return this.computerId;
 	}
 
-	public void setComputerID(Integer ComputerID) {
-		this.computerid = ComputerID;
+	public void setComputerId(Integer computerId) {
+		this.computerId = computerId;
 	}
 
 	public String getComputerName() {
-		return this.computername;
+		return this.computerName;
 	}
 
 	public void setComputerName(String computerName) {
-		this.computername=computerName;
+		this.computerName=computerName;
 	}
 
-	public String getComputerIP() {
-		return this.computerip;
+	public String getComputerIp() {
+		return this.computerIp;
 	}
 
-	public void setComputerIP(String computerIP) {
-		this.computerip=computerIP;
+	public void setComputerIp(String computerIp) {
+		this.computerIp=computerIp;
 	}
 
-	public String getComputerOS() {
-		return this.computeros;
+	public String getComputerOs() {
+		return this.computerOs;
 	}
 
-	public void setComputerOS(String computerOS) {
-		this.computeros=computerOS;
+	public void setComputerOs(String computerOs) {
+		this.computerOs=computerOs;
 	}
 
-	public String getproInfo() {
-		return this.proinfo;
+	public String getComputerCpu() {
+		return this.computerCpu;
 	}
 
-	public void setproInfo(String proInfo) {
-		this.proinfo=proInfo;
+	public void setComputerCpu(String computerCpu) {
+		this.computerCpu=computerCpu;
 	}
 
-	public String getmemInfo() {
-		return this.meminfo;
+	public String getComputerRam() {
+		return this.computerRam;
 	}
 
-	public void setmemInfo(String memInfo) {
-		this.meminfo=memInfo;
+	public void setComputerRam(String computerRam) {
+		this.computerRam=computerRam;
 	}
 
-	public String getdisInfo() {
-		return this.disinfo;
+	public String getComputerDisk() {
+		return this.computerDisk;
 	}
 
-	public void setdisInfo(String disInfo) {
-		this.disinfo=disInfo;
+	public void setComputerDisk(String computerDisk) {
+		this.computerDisk=computerDisk;
 	}
 
-	public String getdatabaseInfo() {
-		return this.databaseinfo;
+	public String getComputerDb() {
+		return this.computerDb;
 	}
 
-	public void setdatabaseInfo(String databaseInfo) {
-		this.databaseinfo=databaseInfo;
+	public void setComputerDb(String computerDb) {
+		this.computerDb=computerDb;
 	}
 
 
 
+	public static final String COMPUTER_ID = "computerId";
 
-	public static final String ComputerID = "computerid";
+	public static final String COMPUTER_NAME = "computerName";
 
-	public static final String ComputerName = "computername";
+	public static final String COMPUTER_IP = "computerIp";
 
-	public static final String ComputerIP = "computerip";
+	public static final String COMPUTER_OS = "computerOs";
 
-	public static final String ComputerOS = "computeros";
+	public static final String COMPUTER_CPU = "computerCpu";
 
-	public static final String proInfo = "proinfo";
+	public static final String COMPUTER_RAM = "computerRam";
 
-	public static final String memInfo = "meminfo";
+	public static final String COMPUTER_DISK = "computerDisk";
 
-	public static final String disInfo = "disinfo";
+	public static final String COMPURER_DB = "computerDb";
 
-	public static final String databaseInfo = "databaseinfo";
-
-	public static final String[] All_FIELDS = new String[] {ComputerID, ComputerName, ComputerIP, ComputerOS, proInfo, memInfo, disInfo, databaseInfo};
+	public static final String[] All_FIELDS = new String[] { COMPUTER_ID, COMPUTER_NAME, COMPUTER_IP, COMPUTER_OS, COMPUTER_CPU, COMPUTER_RAM, COMPUTER_DISK, COMPURER_DB};
 }

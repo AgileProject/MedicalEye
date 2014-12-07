@@ -15,101 +15,101 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "SYS_DATABASE")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DataBase implements Serializable {
+public class Database implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "UpdataID",columnDefinition = "Integer|UpdataID",length = 4,nullable = false)
-	private Integer updataid;
+	@Column(name = "ID",columnDefinition = "Integer|UpdataID",length = 4,nullable = false)
+	private Integer id;
 
-	@Column(name ="ComputerName", columnDefinition = "varchar|主机名", length = 20,nullable = false)
-	private String computername;
+	@Column(name ="COMPUTER_NAME", columnDefinition = "varchar|主机名", length = 20,nullable = false)
+	private String computerName;
 
-	@Column(name = "DatabaseName", columnDefinition = "varchar|数据库名称",length = 50,nullable = false)
-	private String databasename;
+	@Column(name = "DATABASE_NAME", columnDefinition = "varchar|数据库名称",length = 50,nullable = false)
+	private String databaseName;
 
-	@Column(name = "UpDataTime", columnDefinition = "smalldatetime|更新时间",length = 4,nullable = false)
-	private Timestamp updatatime;
+	@Column(name = "UPDATA_TIME", columnDefinition = "smalldatetime|更新时间",length = 4,nullable = false)
+	private Timestamp updataTime;
 
-	@Column(name = "LinkNumb", columnDefinition = "Integer|数据库连接数",length = 4,nullable = true)
-	private Integer linknumb;
+	@Column(name = "LINK_NUMB", columnDefinition = "Integer|数据库连接数",length = 4,nullable = true)
+	private Integer linkNumb;
 
-	@Column(name = "DatabaseSize", columnDefinition = "Integer|数据库大小",length = 4,nullable = true)
-	private Integer databasesize;
+	@Column(name = "DATABASE_SIZE", columnDefinition = "Integer|数据库大小",length = 4,nullable = true)
+	private Integer databaseSize;
 
-	@Column(name = "RAM_Utilization", columnDefinition = "Float|数据库占用内存大小",length = 8,nullable = true)
-	private Float ram_utilization;
+	@Column(name = "RAM_UTILIZATION", columnDefinition = "Float|数据库占用内存大小",length = 8,nullable = true)
+	private Float ramUtilization;
 
-	public Integer getUpdataid() {
-		return this.updataid;
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setUpdataid(Integer updataid) {
-		this.updataid = updataid;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public String getComputername() {
-		return this.computername;
+	public String getComputerName() {
+		return this.computerName;
 	}
 
-	public void setComputername(String computername) {
-		this.computername= computername;
+	public void setComputerName(String computerName) {
+		this.computerName= computerName;
 	}
 
-	public String getDatabasename() {
-		return this.databasename;
+	public String getDatabaseName() {
+		return this.databaseName;
 	}
 
-	public void setDatabasename(String databasename) {
-		this.databasename = databasename;
+	public void setDatabaseName(String databaseName) {
+		this.databaseName = databaseName;
 	}
 
-	public Timestamp getUpdatatime() {
-		return this.updatatime;
+	public Timestamp getUpdataTime() {
+		return this.updataTime;
 	}
 
-	public void setUpdatatime(Timestamp updatatime) {
-		this.updatatime = updatatime;
+	public void setUpdataTime(Timestamp updataTime) {
+		this.updataTime = updataTime;
 	}
 
-	public Integer getLinknumb() {
-		return this.linknumb;
+	public Integer getLinkNumb() {
+		return this.linkNumb;
 	}
 
-	public void setLinknumb(Integer linknumb) {
-		this.linknumb = linknumb;
+	public void setLinkNumb(Integer linkNumb) {
+		this.linkNumb = linkNumb;
 	}
 
-	public Integer getDatabasesize() {
-		return this.databasesize;
+	public Integer getDatabaseSize() {
+		return this.databaseSize;
 	}
 
-	public void setDatabasesize(Integer databasesize) {
-		this.databasesize = databasesize;
+	public void setDatabaseSize(Integer databaseSize) {
+		this.databaseSize = databaseSize;
 	}
 
-	public Float getRam_utilization() {
-		return ram_utilization;
+	public Float getRamUtilization() {
+		return ramUtilization;
 	}
 
-	public void setRam_utilization(Float ram_utilization) {
-		this.ram_utilization=ram_utilization;
+	public void setRamUtilization(Float ramUtilization) {
+		this.ramUtilization=ramUtilization;
 	}
 
-	public static final String UpdataID = "updataid";
+	public static final String ID = "updataid";
 
-	public static final String ComputerName="computername";
+	public static final String COMPUTER_NAME="computerName";
 
-	public static final String DatabaseName="databasename";
+	public static final String DATABASE_NAME="databaseName";
 
-	public static final String UpDataTime="updatatime";
+	public static final String UPDATA_TIME="updataTime";
 
-	public static final String LinkNumb="linknumb";
+	public static final String LINK_NUMB="linkNumb";
 
-	public static final String DatabaseSize="databasesize";
+	public static final String DATABASE_SIZE="databaseSize";
 
-	public static final String RAM_Utilization="ram_utilization";
+	public static final String RAM_UTILIZATION="ramUtilization";
 
-	public static final String[] All_FIELDS = new String[] {UpdataID,ComputerName, DatabaseName,UpDataTime, LinkNumb,DatabaseSize, RAM_Utilization};
+	public static final String[] All_FIELDS = new String[] { ID, COMPUTER_NAME, DATABASE_NAME, UPDATA_TIME, LINK_NUMB, DATABASE_SIZE, RAM_UTILIZATION};
 }

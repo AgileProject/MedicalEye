@@ -1,11 +1,13 @@
 package cn.edu.seu.eye.module.base.dao.management.impl;
 
-import cn.edu.seu.eye.module.base.dao.management.IHardWareDao;
-import cn.edu.seu.eye.module.base.entity.management.HardWare;
+import cn.edu.seu.eye.module.base.dao.management.IHardwareDao;
+import cn.edu.seu.eye.module.base.entity.management.Hardware;
 import com.iron.fast.repository.AbstractDao;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by ling on 2014/12/1.
  */
-public class HardWareDaoImpl extends AbstractDao<HardWare> implements IHardWareDao {
+@Repository
+public class HardwareDaoImpl extends AbstractDao<Hardware> implements IHardwareDao {
 }

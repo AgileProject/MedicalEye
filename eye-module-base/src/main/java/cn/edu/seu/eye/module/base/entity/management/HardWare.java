@@ -16,72 +16,75 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "SYS_HARDWARE")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class HardWare  implements Serializable{
+public class Hardware implements Serializable{
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "UpDataID",  columnDefinition = "Integer|UpdataID", length = 5,nullable = false)
-	private Integer updataid;
+	@Column(name = "ID",  columnDefinition = "Integer|UpdataID", length = 5,nullable = false)
+	private Integer id;
 
-	@Column(name = "ComputerName",columnDefinition = "VARCHAR2|主机名", length = 20, nullable = false)
-	private String computername;
+	@Column(name = "COMPUTER_NAME",columnDefinition = "VARCHAR2|主机名", length = 20, nullable = false)
+	private String computerName;
 
-	@Column(name = "UpdataTime",columnDefinition = "smalldatatime|更新时间", nullable = false)
-	private  Timestamp updatatime;
+	@Column(name = "UPDATA_TIME",columnDefinition = "timestamp|更新时间", nullable = false)
+	private Timestamp updataTime;
 
-	@Column(name = "cpuUtilization",columnDefinition = "float|CPU使用率",length = 8,nullable = true)
-	private Float cpuutilization;
+	@Column(name = "CPU_UTILZATION",columnDefinition = "float|CPU使用率",length = 8,nullable = true)
+	private Float cpuUtilzation;
 
-	@Column(name = "cpuRunTime" , columnDefinition = "float|CPU正常运行时间",length = 8,nullable = true)
-	private Float cpuruntime;
+	@Column(name = "CPU_RUNTIME" , columnDefinition = "float|CPU正常运行时间",length = 8,nullable = true)
+	private Float cpuRuntime;
 
-	@Column(name = "Processes", columnDefinition = "Integer|进程数",length = 4,nullable = true)
+	@Column(name = "PROCESSES", columnDefinition = "Integer|进程数",length = 4,nullable = true)
 	private Integer processes;
 
-	@Column(name = "memUsedPercent", columnDefinition = "float|内存使用率", length = 8,nullable = true)
-	private Float memusedpercent;
+	@Column(name = "RAM_USEDPERCENT", columnDefinition = "float|内存使用率", length = 8,nullable = true)
+	private Float ramUsedpercent;
 
-	@Column(name = "diskUtilization", columnDefinition = "float|硬盘使用率", length = 8, nullable = true)
-	private Float diskutilization;
+	@Column(name = "DISK_UTILZATION", columnDefinition = "float|硬盘使用率", length = 8, nullable = true)
+	private Float diskUtilzation;
 
-	public Integer getUpDataid() {
-		return this.updataid;
+
+
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setUpDataid(Integer updataid) {
-		this.updataid = updataid;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getComputerName() {
-		return this.computername;
+		return this.computerName;
 	}
 
-	public void setComputername(String computername) {
-		this.computername = computername;
+	public void setComputerName(String computerName) {
+		this.computerName = computerName;
 	}
 
 	public Timestamp getUpdataTime() {
-		return this.updatatime;
+		return this.updataTime;
 	}
 
-	public void setUpdataTime(Timestamp time) {
-		this.updatatime =time;
+	public void setUpdataTime(Timestamp updataTime) {
+		this.updataTime = updataTime;
 	}
 
-	public Float getCpuutilization() {
-		return this.cpuutilization;
+	public Float getCpuUtilzation() {
+		return this.cpuUtilzation;
 	}
 
-	public void setCpuutilization(Float cpuutilization) {
-		this.cpuutilization = cpuutilization;
+	public void setCpuUtilzation(Float cpuUtilization) {
+		this.cpuUtilzation = cpuUtilization;
 	}
 
-	public Float getCpuruntime() {
-		return this.cpuruntime;
+	public Float getCpuRuntime() {
+		return this.cpuRuntime;
 	}
 
-	public void setCpuruntime(Float cpuruntime) {
-		this.cpuruntime = cpuruntime;
+	public void setCpuRuntime(Float cpuRuntime) {
+		this.cpuRuntime = cpuRuntime;
 	}
 
 	public Integer getProcesses() {
@@ -92,39 +95,39 @@ public class HardWare  implements Serializable{
 		this.processes = processes;
 	}
 
-	public Float getMemusedpercent() {
-		return this.memusedpercent;
+	public Float getRamUsedpercent() {
+		return this.ramUsedpercent;
 	}
 
-	public void setMemusedpercent(Float memusedpercent) {
-		this.memusedpercent = memusedpercent;
+	public void setRamUsedpercent(Float ramUsedpercent) {
+		this.ramUsedpercent = ramUsedpercent;
 	}
 
-	public Float getDiskutilization() {
-		return this.diskutilization;
+	public Float getDiskUtilzation() {
+		return this.diskUtilzation;
 	}
 
-	public void setDiskutilization(Float diskutilization) {
-		this.diskutilization = diskutilization;
+	public void setDiskUtilzation(Float diskUtilzation) {
+		this.diskUtilzation = diskUtilzation;
 	}
 
-	public static final String UpDataID = "updataid";
+	public static final String ID = "id";
 
-	public static final String ComputerName = "computername";
+	public static final String COMPUTER_NAME = "computerName";
 
-	public static final String UpdataTime = "updatatime";
+	public static final String UPDATA_TIME = "updataTime";
 
-	public static final String cpuUtilization = "cpuutilization";
+	public static final String CPU_UTILZATION = "cpuUtilzation";
 
-	public static final String cpuRunTime = "cpuruntime";
+	public static final String CPU_RUNTIME = "cpuRuntime";
 
-	public static final String Processes = "processes";
+	public static final String PROCESSES = "processes";
 
-	public static final String memUsedPercent = "memusedpercent";
+	public static final String RAM_USEDPERCENT = "ramUsedpercent";
 
-	public static final String diskUtilization = "diskutilization";
+	public static final String DISK_UTILZATION = "diskUtilzation";
 
-	public static final String[] All_FIELDS = new String[] {UpDataID, ComputerName, UpdataTime, cpuUtilization, cpuRunTime, Processes, memUsedPercent, diskUtilization};
+	public static final String[] All_FIELDS = new String[] { ID, COMPUTER_NAME, UPDATA_TIME, CPU_UTILZATION, CPU_RUNTIME, PROCESSES, RAM_USEDPERCENT, DISK_UTILZATION};
 
 
 
