@@ -468,14 +468,26 @@ public class test {
 //                "\"memUsedPercent\":\"78.4\",\"diskUtilization\":\"47.7\"}" ;
 
 
-        String testjson = "{\"computerName\":\"newcomputername\",\"computerIP\":\"\"," +
-                "\"computerOS\":\"windows\",\"proInfo\":\"core2\",\"memInfo\":\"2g\"," +
-                "\"diskInfo\":\"128t\",\"dbInfo\":\"\",\"time\":\"1417835566921\"," +
-                "\"linkNumb\":\"123\",\"size\":\"45\",\"ramUtilization\":\"7.89\"," +
-                "\"cpuUtilization\":\"78.5\",\"cpuRunTime\":\"44.5\",\"process\":\"44\"," +
-                "\"memUsedPercent\":\"78.4\",\"diskUtilization\":\"\"}" ;
+//        String testjson = "{\"computerName\":\"newcomputername\",\"computerIP\":\"\"," +
+//                "\"computerOS\":\"windows\",\"proInfo\":\"core2\",\"memInfo\":\"2g\"," +
+//                "\"diskInfo\":\"128t\",\"dbInfo\":\"\",\"time\":\"1417835566921\"," +
+//                "\"linkNumb\":\"123\",\"size\":\"45\",\"ramUtilization\":\"7.89\"," +
+//                "\"cpuUtilization\":\"78.5\",\"cpuRunTime\":\"44.5\",\"process\":\"44\"," +
+//                "\"memUsedPercent\":\"78.4\",\"diskUtilization\":\"\"}" ;
+//
+//        MongoDBUtils.insertIntoMongoDB(testjson);
 
-        MongoDBUtils.insertIntoMongoDB(testjson);
+        IDatabaseDao databaseDao = (IDatabaseDao) DaoFactory.getInstance("Database","mydb","ee-lab");
+        List<Database> list = new ArrayList<>();
+        int i = databaseDao.storeNRecordToListAfter(10,list);
+        for (Database database:list){
+            System.out.println(database);
+        }
+
+        int j = databaseDao.storeNRecordToListAfter(10,list);
+        for (Database database:list){
+            System.out.println(database);
+        }
 
 
     }

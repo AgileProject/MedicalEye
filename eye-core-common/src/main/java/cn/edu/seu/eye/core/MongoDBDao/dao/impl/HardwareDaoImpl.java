@@ -18,19 +18,19 @@ public class HardwareDaoImpl extends AbstractDao<Hardware> implements IHardwareD
     }
 
     @Override
-    public int storeNRecordToListAfterLastQuery(int number, List<Hardware> list, Object... keyValue) {
+    public int storeNRecordToListAfter(int number, List<Hardware> list, Object... keyValue) {
 
         DBCursor cursor =
-                returnTimeQueryCursor(number,"gt",this.lastQueryTime,keyValue);
+                returnTimeQueryCursor(number,"$gt",this.lastQueryTime,keyValue);
 
         list.clear();
 
         list = readDBCursorToEntityList(cursor,list);
 
-
-        this.lastQueryTime = (list.get(cursor.size()-1)).getTime();
+        if (list.size() != 0){
+            this.lastQueryTime = (list.get(cursor.size()-1)).getTime();
+        }
 
         return cursor.size();
-
     }
 }

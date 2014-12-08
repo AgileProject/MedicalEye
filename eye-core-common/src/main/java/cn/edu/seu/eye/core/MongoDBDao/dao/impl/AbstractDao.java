@@ -1,5 +1,7 @@
 package cn.edu.seu.eye.core.MongoDBDao.dao.impl;
 
+import cn.edu.seu.eye.core.MongoDBDao.entity.Computer;
+import cn.edu.seu.eye.core.MongoDBDao.entity.Hardware;
 import com.mongodb.*;
 import cn.edu.seu.eye.core.MongoDBDao.dao.IDao;
 import cn.edu.seu.eye.core.MongoDBDao.utils.MongoDBConnection;
@@ -64,6 +66,7 @@ public class AbstractDao<T> implements IDao<T>{
 
         while (cursor.hasNext()){
             try {
+
                 Object entity = Class.forName(classType).newInstance();
 
                 list.add(
@@ -95,7 +98,7 @@ public class AbstractDao<T> implements IDao<T>{
         return list;
     }
 
-    protected BasicDBObject createKeyValues(String key, Object value, Object... keyValue){
+    protected BasicDBObject returnKeyValues(String key, Object value, Object... keyValue){
 
         BasicDBObject keyValues = new BasicDBObject(key,value);
 
@@ -147,7 +150,7 @@ public class AbstractDao<T> implements IDao<T>{
     @Override
     public int delete(String key, Object value, Object... keyValue){
 
-        return collection.remove(createKeyValues(key,value,keyValue)).getN();
+        return collection.remove(returnKeyValues(key,value,keyValue)).getN();
 
     }
 
@@ -156,7 +159,7 @@ public class AbstractDao<T> implements IDao<T>{
                       String setKey, Object setValue, Object... setKeyValue){
 
         return collection.update(new BasicDBObject(criteriaKey,criteriaValue),
-                new BasicDBObject("$set",createKeyValues(setKey,setValue,setKeyValue)),true,true).getN();
+                new BasicDBObject("$set",returnKeyValues(setKey,setValue,setKeyValue)),true,true).getN();
 
     }
 
@@ -165,7 +168,7 @@ public class AbstractDao<T> implements IDao<T>{
 
         List<T> list = new ArrayList<>();
 
-        DBCursor cursor = collection.find(createKeyValues(key,value,keyValue))
+        DBCursor cursor = collection.find(returnKeyValues(key,value,keyValue))
                 .sort(new BasicDBObject("_id",1));
 
         list = readDBCursorToEntityList(cursor,list);
@@ -178,7 +181,7 @@ public class AbstractDao<T> implements IDao<T>{
 
         List<T> list = new ArrayList<>();
 
-        BasicDBObject criteria = createKeyValues(key,value,keyValue);
+        BasicDBObject criteria = returnKeyValues(key,value,keyValue);
 
         DBCursor cursor = collection.find(criteria)
                 .sort(new BasicDBObject("_id",1));
@@ -197,6 +200,7 @@ public class AbstractDao<T> implements IDao<T>{
     }
 
     @Override
+    @Deprecated
     public List<T> getRecordAfter(Date time, Object... keyValue) {
 
         List<T> list = new ArrayList<>();
@@ -236,6 +240,14 @@ public class AbstractDao<T> implements IDao<T>{
         list.clear();
 
         list = readDBCursorToEntityList(cursor,list);
+
+        if (list.getClass() == Hardware.class ){
+            this.lastQueryTime = ( (Hardware) list.get(cursor.size()-1)).getTime();
+        }
+
+        if ((list.getClass() == Computer.class)){
+            this.lastQueryTime = ( (Computer) list.get(cursor.size()-1)).getTime();
+        }
 
         return cursor.size();
 

@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface IDatabaseDao extends IDao<Database> {
 
-    int storeNRecordToListAfterLastQuery(int number,List<Database> list, Object...keyValue);
+    int storeNRecordToListAfter(int number,List<Database> list, Object...keyValue);
 
 }

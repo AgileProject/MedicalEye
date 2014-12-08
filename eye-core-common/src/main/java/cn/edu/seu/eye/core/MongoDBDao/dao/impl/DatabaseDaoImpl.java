@@ -18,11 +18,10 @@ public class DatabaseDaoImpl extends AbstractDao<Database> implements IDatabaseD
     }
 
     @Override
-    public int storeNRecordToListAfterLastQuery(int number, List<Database> list, Object... keyValue) {
-
+    public int storeNRecordToListAfter(int number, List<Database> list, Object... keyValue) {
 
             DBCursor cursor =
-                    returnTimeQueryCursor(number,"gt",this.lastQueryTime,keyValue);
+                    returnTimeQueryCursor(number,"$gt",this.lastQueryTime,keyValue);
 
             list.clear();
 
@@ -33,6 +32,5 @@ public class DatabaseDaoImpl extends AbstractDao<Database> implements IDatabaseD
             }
 
             return cursor.size();
-
     }
 }

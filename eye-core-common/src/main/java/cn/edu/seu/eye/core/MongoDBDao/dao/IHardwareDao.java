@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface IHardwareDao extends IDao<Hardware> {
 
-    int storeNRecordToListAfterLastQuery(int number,List<Hardware> list, Object...keyValue);
+    int storeNRecordToListAfter(int number,List<Hardware> list, Object...keyValue);
 
 }
