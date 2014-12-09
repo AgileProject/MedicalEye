@@ -9,7 +9,7 @@
             {
                 "name": "统计报表",
                 "active": false,
-                "url": "#/statistics"
+                "url": "#/warnings"
             },
             {
                 "name": "数据分析",
@@ -21,14 +21,14 @@
     {
         "menus": [
             {
-                "name": "项目审批",
+                "name": "告警设置",
                 "active": false,
-                "url": "#"
+                "url": "#/warnings"
             },
             {
                 "name": "个人设置",
                 "active": false,
-                "url": "#"
+                "url": "#/personsettings"
             }
         ]
     }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1"><!--初始化移动浏览显示-->
 <title>系统智能监控平台</title>
 <link href="lib/bootstrap-3.2.0-dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -13,6 +13,8 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
 <script src="lib/jquery/jquery-1.11.1.min.js"></script>
 <script src="lib/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
 <script src="lib/angular/angular.min.js"></script>
@@ -25,6 +27,7 @@
 <script	src="controllers/ComputerControllers.js"></script>
 <script	src="services/MenuServices.js"></script>
 <script	src="controllers/CommonControllers.js"></script>
+
 </head>
 
 <body cz-shortcut-listen="true" ryt12416="1">
@@ -58,7 +61,8 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar" ng-controller="MenuController">
 				<ul class="nav nav-sidebar" ng-repeat="homeMenu in homeMenus">
-					<li ng-class="{active:menu.active}" ng-repeat="menu in homeMenu.menus"><a href="{{menu.url}}" ng-click="selectMenu(menu)">{{menu.name}}</a></li>
+					<li ng-class="{active:menu.active}" ng-repeat="menu in homeMenu.menus">
+						<a href="{{menu.url}}" ng-click="selectMenu(menu)">{{menu.name}}</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view>
