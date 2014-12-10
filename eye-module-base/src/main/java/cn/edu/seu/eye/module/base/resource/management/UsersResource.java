@@ -9,7 +9,7 @@ import cn.edu.seu.eye.module.base.resource.BaseResource;
 import cn.edu.seu.eye.module.base.service.management.IUser;
 import cn.edu.seu.eye.module.base.utils.LoginUserUtil;
 import com.iron.fast.beans.Criteria;
-import com.iron.fast.beans.Order;
+import com.iron.fast.beans.OP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,15 +29,15 @@ public class UsersResource extends BaseResource {
 	@RequestMapping
 	@WithoutAuthentication
 	public Result getAllUsers(HttpServletRequest request) {
-		List<User> lstUsers = sysUserService.getListWithDetail(buildCriteria(request,User.All_FIELDS), new Order(User.ORG_NAME).asc(User.EMPLOYEE_NAME));
+		//List<User> lstUsers = sysUserService.getListWithDetail(buildCriteria(request,User.All_FIELDS), new Order(User.ORG_NAME).asc(User.EMPLOYEE_NAME));
+		List<User> lstUsers = sysUserService.getList(buildCriteria(request, User.All_FIELDS));
 		Result result = new Result(lstUsers);
 		return result;
 	}
 	
-	@RequestMapping("/{userName}")
+	@RequestMapping(value = "/{userName}")
 	public Result findUserInfo(@PathVariable("userName") String userName) {
-		//User sysUser = sysUserService.get(userName);
-		User sysUser = sysUserService.get(userName);
+		User sysUser = sysUserService.get(new Criteria(User.LOGIN_NAME, OP.EQ, userName));
 		if (sysUser != null) {
 			return new Result(sysUser);
 		} else {

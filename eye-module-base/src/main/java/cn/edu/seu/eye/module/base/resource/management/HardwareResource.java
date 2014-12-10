@@ -5,11 +5,16 @@ import cn.edu.seu.eye.module.base.entity.management.Hardware;
 import cn.edu.seu.eye.module.base.presentation.Result;
 import cn.edu.seu.eye.module.base.resource.BaseResource;
 import cn.edu.seu.eye.module.base.service.management.IHardware;
+import com.iron.fast.beans.Criteria;
+import com.iron.fast.beans.OP;
+import com.iron.fast.beans.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -30,5 +35,75 @@ public class HardwareResource extends BaseResource {
 		Result result = new Result(hardwares);
 		return result;
 	}
+
+
+	@RequestMapping(value = "/{computerName}")
+	public Result getHardwareByComputerName(@PathVariable("computerName") String computerName ) {
+		List<Hardware> hardwares = sysHardwareServce.getListWithDetail(new Criteria(Hardware.COMPUTER_NAME, OP.EQ, computerName),
+				new Order(Hardware.COMPUTER_NAME).desc(Hardware.UPDATA_TIME));
+
+		Hardware hardware = hardwares.get(0);
+
+		if (hardware != null) {
+			return new Result(hardware);
+		}else {
+			throw new RuntimeException();
+		}
+	}
+
+	@RequestMapping(value = "/{computerName}/{updataTime}/{utilzation}")
+	public Result getDataByComputerNameInTime
+			(@PathVariable String computerName, @PathVariable Timestamp updataTime, @PathVariable String utilzation) {
+		Criteria criteria = new Criteria(Hardware.COMPUTER_NAME, OP.EQ, computerName);
+		criteria.add(Hardware.UPDATA_TIME, OP.LE, updataTime);
+		//criteria.add(Hardware.CPU_UTILZATION,);
+		List<Hardware> hardwares = sysHardwareServce.getListWithDetail(criteria,
+				new Order(Hardware.COMPUTER_NAME).asc(Hardware.UPDATA_TIME));
+
+		Hardware hardware = hardwares.get(0);
+
+		Float cpuUtilzation = hardware.getCpuUtilzation();
+		Float cpuRuntime = hardware.getCpuRuntime();
+		Integer processes = hardware.getProcesses();
+		Float ramUsedpercent =hardware.getRamUsedpercent();
+		Float diskUtilzation = hardware.getDiskUtilzation();
+
+		switch (utilzation) {
+			case "cpuUtilzation":
+				if (cpuUtilzation != null) {
+					return new Result(cpuUtilzation);
+				}else {
+					throw new RuntimeException();
+				}
+			case "cpuRuntime":
+				if (cpuRuntime != null) {
+					return new Result(cpuRuntime);
+				}else {
+					throw new RuntimeException();
+				}
+			case "processes":
+				if (processes != null) {
+					return new Result(processes);
+				}else {
+					throw new RuntimeException();
+				}
+			case "ramUsedpercent":
+				if (ramUsedpercent != null) {
+					return new Result(ramUsedpercent);
+				}else {
+					throw new RuntimeException();
+				}
+			case "diskUtilzation":
+				if (diskUtilzation != null) {
+					return new Result(diskUtilzation);
+				}else {
+					throw new RuntimeException();
+				}
+			default:
+				throw new RuntimeException();
+		}
+	}
+
+
 
 }
