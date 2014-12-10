@@ -42,6 +42,18 @@ public class User implements Serializable {
 	@Column(name = "STATUS", columnDefinition = "NUMBER|状态", length = 1, nullable = true)
 	private Integer status;
 
+    @Column(name = "EMAIL", columnDefinition = "VARCHAR2|邮箱", length = 50, nullable = true)
+    private String email;
+
+    @Column(name = "TELEPHONE", columnDefinition = "VARCHAR2|手机", length = 50, nullable = true)
+    private String telephone;
+
+    @Column(name = "SEND_EMAIL", columnDefinition = "BIT|发送邮件", length = 1, nullable = true)
+    private boolean sendEmail;
+
+    @Column(name = "SEND_MESSAGE", columnDefinition = "BIT|发送邮件", length = 1, nullable = true)
+    private boolean sendMessage;
+
 	@OneToMany(targetEntity = UserRole.class)
 	@JoinColumn(name = "loginName", referencedColumnName = "loginName")
 	private List<UserRole> userRoleList;
@@ -137,7 +149,39 @@ public class User implements Serializable {
 		this.userPermissions = userPermissions;
 	}
 
-	private List<String> userPermissions;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public boolean isSendEmail() {
+        return sendEmail;
+    }
+
+    public void setSendEmail(boolean sendEmail) {
+        this.sendEmail = sendEmail;
+    }
+
+    public boolean isSendMessage() {
+        return sendMessage;
+    }
+
+    public void setSendMessage(boolean sendMessage) {
+        this.sendMessage = sendMessage;
+    }
+
+    private List<String> userPermissions;
 
 	/**
 	 * ID
@@ -171,7 +215,24 @@ public class User implements Serializable {
 	 * 状态
 	 */
 	public static final String STATUS = "status";
+    /**
+     * 手机
+     */
+    public static final String TELEPHONE = "telephone";
+    /**
+     * 邮箱
+     */
+    public static final String EMAIL = "email";
+    /**
+     * 发送邮箱
+     */
+    public static final String SEND_EMAIL = "sendEmail";
+    /**
+     * 发送短信
+     */
+    public static final String SEND_MESSAGE = "sendMssage";
 
-	public static final String[] All_FIELDS = new String[] { ID, ORG_ID, ORG_NAME, EMPLOYEE_ID, EMPLOYEE_NAME, LOGIN_NAME, PASSWORD, STATUS };
+
+	public static final String[] All_FIELDS = new String[] { ID, ORG_ID, ORG_NAME, EMPLOYEE_ID, EMPLOYEE_NAME, LOGIN_NAME, PASSWORD, STATUS, TELEPHONE, EMAIL, SEND_EMAIL, SEND_MESSAGE};
 
 }

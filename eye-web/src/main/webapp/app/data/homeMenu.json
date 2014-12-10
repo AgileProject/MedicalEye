@@ -12,9 +12,9 @@
                 "url": "#/statistics"
             },
             {
-                "name": "数据分析",
+                "name": "报警",
                 "active": false,
-                "url": "#"
+                "url": "#/alarms"
             }
         ]
     },
@@ -28,7 +28,12 @@
             {
                 "name": "个人设置",
                 "active": false,
-                "url": "#"
+                "url": "#/personsettings"
+            },
+            {
+                "name": "测试",
+                "active": false,
+                "url": "#/test"
             }
         ]
     }

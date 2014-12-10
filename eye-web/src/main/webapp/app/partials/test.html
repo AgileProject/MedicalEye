@@ -1,0 +1,119 @@
+前后台数据通讯测试
+ <div class="table-responsive">
+     <table class="table table-striped" ng-controller="ComputerController">
+         <thead>
+         <tr>
+             <th>序号</th>
+             <th>电脑名</th>
+             <th>电脑IP信息</th>
+             <th>电脑系统信息</th>
+             <th>电脑CPU信息</th>
+             <th>电脑RAM信息</th>
+             <th>电脑硬盘信息</th>
+             <th>电脑数据库信息</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr ng-repeat="computer in computers.data">
+             <td>{{computer.computerId}}</td>
+             <td>{{computer.computerName}}</td>
+             <td>{{computer.computerIp}}</td>
+             <td>{{computer.computerOs}}</td>
+             <td>{{computer.computerCpu}}</td>
+             <td>{{computer.computerRam}}</td>
+             <td>{{computer.computerDisk}}</td>
+             <td>{{computer.computerDb}}</td>
+         </tr>
+         </tbody>
+     </table>
+
+     <table class="table table-striped" ng-controller="AlarmController">
+         <thead>
+         <tr>
+             <th>报警编号</th>
+             <th>主机名</th>
+             <th>报警时间</th>
+             <th>报警信息</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr ng-repeat="alarm in alarms.data">
+
+             <td>{{alarm.alarmId}}</td>
+             <td>{{alarm.computerName}}</td>
+             <td>{{alarm.alarmTime |date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+             <td>{{alarm.alarmMessage}}</td>
+         </tr>
+         </tbody>
+     </table>
+
+     <table class="table table-striped" ng-controller="DatabaseController">
+         <thead>
+         <tr>
+             <th>编号</th>
+             <th>主机名</th>
+             <th>数据库名称</th>
+             <th>更新时间</th>
+             <th>数据库连接数</th>
+             <th>数据库大小</th>
+             <th>占用内存大小</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr ng-repeat="database in databases.data">
+
+             <td>{{database.id}}</td>
+             <td>{{database.computerName}}</td>
+             <td>{{database.databaseName}}</td>
+             <td>{{database.updataTime|date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+             <td>{{database.linkNumb}}</td>
+             <td>{{database.databaseSize}}</td>
+             <td>{{database.ramUtilization}}</td>
+         </tr>
+         </tbody>
+     </table>
+
+     <table class="table table-striped" ng-controller="HardwareController">
+         <thead>
+         <tr>
+             <th>编号</th>
+             <th>主机名</th>
+             <th>更新时间</th>
+             <th>CPU使用率</th>
+             <th>CPU正常运行时间</th>
+             <th>进程数</th>
+             <th>内存使用率</th>
+             <th>硬盘使用率</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr ng-repeat="hardware in hardwares.data">
+
+             <td>{{hardware.id}}</td>
+             <td>{{hardware.computerName}}</td>
+             <td>{{hardware.updataTime|date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+             <td>{{hardware.cpuUtilzation}}</td>
+             <td>{{hardware.cpuRuntime}}</td>
+             <td>{{hardware.processes}}</td>
+             <td>{{hardware.ramUsedpercent}}</td>
+             <td>{{hardware.diskUtilzation}}</td>
+         </tr>
+         </tbody>
+     </table>
+
+     <table class="table table-striped" ng-controller="UserController">
+         <thead>
+         <tr>
+             <th>手机号码</th>
+             <th>邮箱</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr ng-repeat="user in users.data">
+
+             <td>{{user.telephone}}</td>
+             <td>{{user.email}}</td>
+         </tr>
+         </tbody>
+     </table>
+ </div>

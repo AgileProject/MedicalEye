@@ -27,7 +27,7 @@ public class ComputersResource extends BaseResource {
     @RequestMapping
     @WithoutAuthentication
     public Result getAllComputers(HttpServletRequest request) {
-        List<Computer> lstComputers = sysComputerService.getAll();
+        List<Computer> lstComputers = sysComputerService.getList(buildCriteria(request, Computer.All_FIELDS));
         Result result = new Result(lstComputers);
         return result;
     }
