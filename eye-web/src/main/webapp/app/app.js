@@ -6,16 +6,18 @@ var resourceWebRoot ="/eye/rest/";
 			 'ngRoute',
 			 'UserControllers',
 			 'UserServices',
-             'ComputerControllers',
-             'ComputerServices',
-             'AlarmControllers',
-             'AlarmServices',
-             'HardwareControllers',
-             'HardwareServices',
-             'DatabaseControllers',
-             'DatabaseServices',
 			 'MenuServices',
-			 'CommonControllers'
+			 'CommonControllers',
+                'ComputerControllers',
+                'ComputerServices',
+                'AlarmControllers',
+                'AlarmServices',
+                'AlarmindexControllers',
+                'AlarmindexServices',
+                'HardwareControllers',
+                'HardwareServices',
+                'DatabaseControllers',
+                'DatabaseServices'
 			 ]);
 	
 	app.config([ '$routeProvider', function($routeProvider) {

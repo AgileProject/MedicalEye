@@ -33,11 +33,11 @@ public class Computer implements Serializable {
     private String computerDisk;
     @Column(name = "COMPUTER_DB", columnDefinition = "VARCHAR2|电脑数据库信息", length = 20, nullable = true)
     private String computerDb;
-    @Column(name = "ALARM_CPU", columnDefinition = "float|CPU报警指标", length = 4, nullable = true)
+    @Column(name = "ALARM_CPU", columnDefinition = "float|CPU报警指标", length = 8, nullable = true)
     private float alarmCpu;
-    @Column(name = "ALARM_RAM", columnDefinition = "float|RAM报警指标", length = 4, nullable = true)
+    @Column(name = "ALARM_RAM", columnDefinition = "float|RAM报警指标", length = 8, nullable = true)
     private float alarmRam;
-    @Column(name = "ALARM_Disk", columnDefinition = "float|硬盘报警指标", length = 4, nullable = true)
+    @Column(name = "ALARM_Disk", columnDefinition = "float|硬盘报警指标", length = 8, nullable = true)
     private float alarmDisk;
 
 

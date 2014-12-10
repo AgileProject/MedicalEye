@@ -34,6 +34,7 @@
              <th>主机名</th>
              <th>报警时间</th>
              <th>报警信息</th>
+             <th>报警级别</th>
          </tr>
          </thead>
          <tbody>
@@ -43,6 +44,7 @@
              <td>{{alarm.computerName}}</td>
              <td>{{alarm.alarmTime |date: 'yyyy-MM-dd HH:mm:ss' }}</td>
              <td>{{alarm.alarmMessage}}</td>
+             <td>{{alarm.alarmLevel}}</td>
          </tr>
          </tbody>
      </table>
@@ -113,6 +115,34 @@
 
              <td>{{user.telephone}}</td>
              <td>{{user.email}}</td>
+         </tr>
+         </tbody>
+     </table>
+
+     <table class="table table-striped" ng-controller="AlarmindexController">
+         <thead>
+         <tr>
+             <th>编号</th>
+             <th>主机名</th>
+             <th>CPU利用率低级报警指标</th>
+             <th>CPU利用率高级报警指标</th>
+             <th>RAM利用率低级报警指标</th>
+             <th>RAM利用率高级报警指标</th>
+             <th>DISK利用率低级报警指标</th>
+             <th>DISK利用率高级报警指标</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr ng-repeat="alarmindex in alarmindexs.data">
+
+             <td>{{alarmindex.indexid}}</td>
+             <td>{{alarmindex.computerName}}</td>
+             <td>{{alarmindex.cpuLowalarm}}</td>
+             <td>{{alarmindex.cpuHighalarm}}</td>
+             <td>{{alarmindex.ramLowalarm}}</td>
+             <td>{{alarmindex.ramHighalarm}}</td>
+             <td>{{alarmindex.diskLowalarm}}</td>
+             <td>{{alarmindex.diskHighalarm}}</td>
          </tr>
          </tbody>
      </table>

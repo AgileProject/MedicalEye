@@ -25,6 +25,8 @@ public class Alarm implements Serializable {
     private Timestamp alarmTime;
     @Column(name = "ALARM_MESSAGE", columnDefinition = "VARCHAR2|报警信息", length = 100, nullable = true)
     private String alarmMessage;
+    @Column(name = "ALARM_LEVEL", columnDefinition = "int|报警信息", length = 4, nullable = true)
+    private int alarmLevel;
 
     public int getAlarmId() {
         return alarmId;
@@ -58,11 +60,20 @@ public class Alarm implements Serializable {
         this.alarmMessage = alarmMessage;
     }
 
+    public int getAlarmLevel() {
+        return alarmLevel;
+    }
+
+    public void setAlarmLevel(int alarmLevel) {
+        this.alarmLevel = alarmLevel;
+    }
+
     public static final String ALARM_ID="alarmId";
     public static final String COMPUTER_NAME="computerName";
     public static final String ALARM_TIME="alarmTime";
     public static final String ALARM_MESSAGE="alarmMessage";
+    public static final String ALARM_LEVEL="alarmLevel";
 
-    public static final String[] All_FIELDS = new String[] { ALARM_ID, COMPUTER_NAME, ALARM_TIME, ALARM_MESSAGE};
+    public static final String[] All_FIELDS = new String[] { ALARM_ID, COMPUTER_NAME, ALARM_TIME, ALARM_MESSAGE,ALARM_LEVEL};
 
 }

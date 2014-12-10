@@ -7,8 +7,5 @@
     app.controller('AlarmController', [ '$scope', 'Alarm',
         function($scope, Alarm) {
             $scope.alarms = Alarm.get();
-            $scope.showDetail = function(alarm) {
-                $scope.alarm = alarm;
-            }
         } ]);
 })();
