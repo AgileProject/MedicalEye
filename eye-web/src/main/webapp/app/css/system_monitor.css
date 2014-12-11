@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+body {
+    padding-top: 50px;
+}
+
+/*简单区域块样式*/
+.content_block {
+    border: 1px solid #CCC;
+    margin: 10px 0;
+}
+
+.content_block > .content_block_title {
+    margin-top: 0;
+    height: 32px;
+    line-height: 32px;
+    background: #f5f6f9;
+    padding: 0 18px;
+    color: #000000;
+    position: relative;
+    clear: left;
+}
+
+.content_block > .content_block_body {
+    position: relative;
+}

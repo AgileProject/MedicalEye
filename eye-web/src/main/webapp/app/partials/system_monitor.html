@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>系统智能监控平台</title>
+
+    <link href="lib/angular-chart/dist/angular-chart.css" rel="stylesheet">
+    <link href="lib/bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/system_monitor.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular-resource.min.js"></script>
+    <script src="lib/angular/angular-route.min.js"></script>
+    <script src="lib/angular-chart/bower_components/angular/angular.min.js"></script>
+    <script src="lib/angular-chart/bower_components/Chart.js/Chart.js"></script>
+    <script src="lib/angular-chart/dist/angular-chart.js"></script>
+    <script src="lib/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+    <script src="lib/jquery/jquery-1.11.1.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="controllers/CommonControllers.js"></script>
+    <script src="controllers/LinesChart.js"></script>
+    <script src="controllers/UserControllers.js"></script>
+    <script src="services/MenuServices.js"></script>
+    <script src="services/UserServices.js"></script>
+
+</head>
+
+<body>
+    <h4 class="page-header">所有服务器</h4>
+
+    <table class="table" ng-controller="ComputerStateCtrl">
+        <thead>
+        <tr>
+            <th>主机名称</th>
+            <th>IP地址</th>
+            <th>CPU占用率</th>
+            <th>RAM占用率</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="computer in computers">
+            <td>{{computer.name}}</td>
+            <td><a href="#/statistics">{{computer.ip}}</a></td>
+            <td>{{computer.cpu}}</td>
+            <td>{{computer.ram}}</td>
+        </tr>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+

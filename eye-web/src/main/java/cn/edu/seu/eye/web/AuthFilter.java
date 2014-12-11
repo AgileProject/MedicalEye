@@ -14,48 +14,47 @@ import java.io.IOException;
 
 /**
  * 用于网站登录拦截，和resource无关
- * 
- * @author tongchang
  *
+ * @author tongchang
  */
-@WebFilter(filterName = "AuthFilter", urlPatterns = { "/app/partials/*", "/app/index.html" })
+@WebFilter(filterName = "AuthFilter", urlPatterns = {"/app/partials/*", "/app/index.html"})
 public class AuthFilter implements Filter {
 
-	private static final Logger logger = LoggerFactory.getLogger(AuthFilter.class);
+    private static final Logger logger = LoggerFactory.getLogger(AuthFilter.class);
 
-	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
-		// TODO Auto-generated method stub
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		Cookie[] cookieList = ((HttpServletRequest) request).getCookies();
-		String token = getCookieValue(cookieList, LoginUserUtil.TOKEN);
-		User user = LoginUserUtil.getUser(token);
-		if (user == null) {
-			((HttpServletResponse) response).sendRedirect("/air/index.html");
-		} else {
-			chain.doFilter(request, response);
-		}
-	}
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        Cookie[] cookieList = ((HttpServletRequest) request).getCookies();
+        String token = getCookieValue(cookieList, LoginUserUtil.TOKEN);
+        User user = LoginUserUtil.getUser(token);
+        if (user == null) {
+            ((HttpServletResponse) response).sendRedirect("/air/index.html");
+        } else {
+            chain.doFilter(request, response);
+        }
+    }
 
-	@Override
-	public void destroy() {
-		logger.debug("destroy");
-	}
+    @Override
+    public void destroy() {
+        logger.debug("destroy");
+    }
 
-	private String getCookieValue(Cookie[] cookieList, String key) {
-		String value = null;
-		if (cookieList != null) {
-			for (Cookie cookie : cookieList) {
-				if (cookie.getName().equals(key)) {
-					value = cookie.getValue();
-				}
-			}
-		}
-		return value;
-	}
+    private String getCookieValue(Cookie[] cookieList, String key) {
+        String value = null;
+        if (cookieList != null) {
+            for (Cookie cookie : cookieList) {
+                if (cookie.getName().equals(key)) {
+                    value = cookie.getValue();
+                }
+            }
+        }
+        return value;
+    }
 
 }
