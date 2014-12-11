@@ -6,7 +6,7 @@
 				$scope.computers = Computer.get();
 				$scope.showDetail = function(computer) {
 					$scope.computer = computer
-					$('#myModal').modal('show');
+
 				}
 			} ]);
 })();

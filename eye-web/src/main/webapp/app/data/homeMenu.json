@@ -9,12 +9,12 @@
             {
                 "name": "统计报表",
                 "active": false,
-                "url": "#/warnings"
+                "url": "#/statistics"
             },
             {
                 "name": "数据分析",
                 "active": false,
-                "url": "#"
+                "url": "#/data"
             }
         ]
     },

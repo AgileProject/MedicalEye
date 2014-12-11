@@ -8,6 +8,8 @@ var resourceWebRoot ="/eye/rest/";
 			 'UserServices',
 			 'MenuServices',
 			 'CommonControllers',
+			 'DataControllers',
+
 
 
 			 ]);
@@ -20,6 +22,9 @@ var resourceWebRoot ="/eye/rest/";
 			templateUrl : 'partials/warnings.html'
 		}).when('/personsettings', {
 			templateUrl : 'partials/personsettings.html'
+		}).when('/data', {
+			templateUrl : 'partials/data.html',
+			controller:'BarCtrl'
 		}).otherwise({
 			redirectTo : '/dashboard'
 		});
