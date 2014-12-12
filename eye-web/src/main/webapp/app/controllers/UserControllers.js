@@ -7,10 +7,11 @@
 					$scope.user = user;
 					$('#myModal').modal('show');
 				};
-                $scope.save = function(user) {
-                    alert(user.employeeName);
-//                    alert("修改成功");
-                }
+                $scope.updata = function() {
+                    User.updata($scope.users.data[0], function() {
+                        alert("修改成功" );
+                    });
+                };
 			} ]);
 
 	app.filter('userStatusFilter', function() {
@@ -22,5 +23,4 @@
 			}
 		}
 	});
-
 })();

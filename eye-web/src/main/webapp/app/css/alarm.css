@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+.table > thead > tr > td.alarmwarning,
+.table > tbody > tr > td.alarmwarning,
+.table > tfoot > tr > td.alarmwarning,
+.table > thead > tr > th.alarmwarning,
+.table > tbody > tr > th.alarmwarning,
+.table > tfoot > tr > th.alarmwarning,
+.table > thead > tr.alarmwarning > td,
+.table > tbody > tr.alarmwarning > td,
+.table > tfoot > tr.alarmwarning > td,
+.table > thead > tr.alarmwarning > th,
+.table > tbody > tr.alarmwarning > th,
+.table > tfoot > tr.alarmwarning > th{
+    background-color: yellow;
+}
+
+
+.table > thead > tr > td.alarmdanger,
+.table > tbody > tr > td.alarmdanger,
+.table > tfoot > tr > td.alarmdanger,
+.table > thead > tr > th.alarmdanger,
+.table > tbody > tr > th.alarmdanger,
+.table > tfoot > tr > th.alarmdanger,
+.table > thead > tr.alarmdanger > td,
+.table > tbody > tr.alarmdanger > td,
+.table > tfoot > tr.alarmdanger > td,
+.table > thead > tr.alarmdanger > th,
+.table > tbody > tr.alarmdanger > th,
+.table > tfoot > tr.alarmdanger > th {
+    background-color: red;
+}

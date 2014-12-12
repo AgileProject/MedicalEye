@@ -30,6 +30,8 @@ var resourceWebRoot ="/eye/rest/";
             templateUrl : 'partials/alarms.html'
         }).when('/personsettings', {
             templateUrl : 'partials/personsettings.html'
+        }).when('/alarmsettings', {
+            templateUrl : 'partials/alarmsettings.html'
         }).when('/test', {
             templateUrl : 'partials/test.html'
 		}).otherwise({

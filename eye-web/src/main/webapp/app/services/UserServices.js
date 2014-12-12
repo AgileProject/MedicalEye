@@ -6,6 +6,10 @@
 	var app = angular.module('UserServices', [ 'ngResource' ]);
 
 	app.factory('User', [ '$resource', function($resource) {
-		return $resource(resourceWebRoot+'system/users');
-	} ]);
+        return $resource(resourceWebRoot+'system/users',{}, {
+            updata : {
+                method : 'put'
+            }
+        });
+    } ]);
 })();

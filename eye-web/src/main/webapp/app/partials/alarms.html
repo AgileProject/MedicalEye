@@ -1,0 +1,29 @@
+
+
+
+<div class="table-responsive" >
+
+    <table class="table table-striped" ng-controller="AlarmController">
+        <thead>
+        <tr>
+            <th>主机名</th>
+            <th>报警时间</th>
+            <th>报警信息</th>
+            <th>报警级别</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="alarm in alarms.data | filter:searchAlarmText"
+            ng-class="{alarmdanger:alarm.alarmLevel == 1, alarmwarning:alarm.alarmLevel == 0}">
+            <td>{{alarm.computerName}}</td>
+            <td>{{alarm.alarmTime |date: 'yyyy-MM-dd HH:mm' }}</td>
+            <td>{{alarm.alarmMessage}}</td>
+            <td>{{alarm.alarmLevel}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<script language=JavaScript>-->
+    <!--self.opener.location.reload();-->
+<!--</script>-->

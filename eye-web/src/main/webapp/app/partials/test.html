@@ -27,27 +27,7 @@
          </tbody>
      </table>
 
-     <table class="table table-striped" ng-controller="AlarmController">
-         <thead>
-         <tr>
-             <th>报警编号</th>
-             <th>主机名</th>
-             <th>报警时间</th>
-             <th>报警信息</th>
-             <th>报警级别</th>
-         </tr>
-         </thead>
-         <tbody>
-         <tr ng-repeat="alarm in alarms.data">
 
-             <td>{{alarm.alarmId}}</td>
-             <td>{{alarm.computerName}}</td>
-             <td>{{alarm.alarmTime |date: 'yyyy-MM-dd HH:mm:ss' }}</td>
-             <td>{{alarm.alarmMessage}}</td>
-             <td>{{alarm.alarmLevel}}</td>
-         </tr>
-         </tbody>
-     </table>
 
      <table class="table table-striped" ng-controller="DatabaseController">
          <thead>
@@ -67,7 +47,7 @@
              <td>{{database.id}}</td>
              <td>{{database.computerName}}</td>
              <td>{{database.databaseName}}</td>
-             <td>{{database.updataTime|date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+             <td>{{database.updataTime|date: 'yyyy-MM-dd HH:mm' }}</td>
              <td>{{database.linkNumb}}</td>
              <td>{{database.databaseSize}}</td>
              <td>{{database.ramUtilization}}</td>
@@ -93,7 +73,7 @@
 
              <td>{{hardware.id}}</td>
              <td>{{hardware.computerName}}</td>
-             <td>{{hardware.updataTime|date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+             <td>{{hardware.updataTime|date: 'yyyy-MM-dd HH:mm' }}</td>
              <td>{{hardware.cpuUtilzation}}</td>
              <td>{{hardware.cpuRuntime}}</td>
              <td>{{hardware.processes}}</td>

@@ -21,9 +21,9 @@
     {
         "menus": [
             {
-                "name": "项目审批",
+                "name": "报警设置",
                 "active": false,
-                "url": "#"
+                "url": "#/alarmsettings"
             },
             {
                 "name": "个人设置",
