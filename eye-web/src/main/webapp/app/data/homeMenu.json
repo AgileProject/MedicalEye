@@ -15,6 +15,11 @@
                 "name": "数据分析",
                 "active": false,
                 "url": "#/data"
+            },
+            {
+                "name": "报警显示",
+                "active": false,
+                "url": "#/alarms"
             }
         ]
     },
@@ -23,12 +28,17 @@
             {
                 "name": "告警设置",
                 "active": false,
-                "url": "#/warnings"
+                "url": "#/alarmsettings"
             },
             {
                 "name": "个人设置",
                 "active": false,
                 "url": "#/personsettings"
+            },
+            {
+                "name": "测试",
+                "active": false,
+                "url": "#/test"
             }
         ]
     }
