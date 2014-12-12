@@ -1,4 +1,3 @@
-
 (function() {
 	var app = angular.module('ComputerControllers', []);
 
@@ -6,7 +5,8 @@
 			function($scope, Computer) {
 				$scope.computers = Computer.get();
 				$scope.showDetail = function(computer) {
-					$scope.computer = computer;
+					$scope.computer = computer
+
 				}
 			} ]);
 })();

@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('UserControllers', []);
+	var app = angular.module('UserControllers',[ ]);
 
 	app.controller('UserController', [ '$scope', 'User',
 			function($scope, User) {
@@ -18,6 +18,28 @@
 				return "未启动"
 			}
 		}
+	});
+
+	//app.controller("BarCtrlPro", function ($scope) {
+	//	$scope.labels = ['','服务器','', '数据库',''];
+	//	$scope.data = [
+	//		[null,3,null,1,null]
+	//	];
+	//});
+	app.controller("BarCtrlPro", function ($scope) {
+
+		$scope.labels = ['','服务器','', '数据库',''];
+		$scope.data = [
+			[null,4,null,2,null]
+		];
+
+	});
+
+	app.controller("BarCtrlWar", function ($scope) {
+		$scope.labels = ['','服务器','', '数据库',''];
+		$scope.data = [
+			[null,4,null,1,null]
+		];
 	});
 
 })();

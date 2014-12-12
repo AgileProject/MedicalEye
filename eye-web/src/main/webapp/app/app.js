@@ -6,22 +6,31 @@ var resourceWebRoot ="/eye/rest/";
 			 'ngRoute',
 			 'UserControllers',
 			 'UserServices',
-             'ComputerControllers',
-             'ComputerServices',
 			 'MenuServices',
-			 'CommonControllers'
+			 'CommonControllers',
+			 'LinesChart',
+
+
+
 			 ]);
 	
 	app.config([ '$routeProvider', function($routeProvider) {
 		$routeProvider.when('/dashboard', {
 			templateUrl : 'partials/dashboard.html',
 			controller:'UserController'
-		}).when('/statistics', {
-			templateUrl : 'partials/statistics.html',
-            controller:'ComputerController'
+		}).when('/warnings', {
+			templateUrl : 'partials/warnings.html'
+		}).when('/personsettings', {
+			templateUrl : 'partials/personsettings.html'
+		}).when('/data', {
+			templateUrl : 'partials/data.html',
+			controller:'CPUTicksCtrl'
+
 		}).otherwise({
 			redirectTo : '/dashboard'
 		});
 	} ]);
+
+
 
 })();
