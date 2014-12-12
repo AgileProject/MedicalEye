@@ -1,45 +1,28 @@
-
 <body>
-<h1 class="page-header">统计图表</h1>
+<h1 class="page-header"> 项目概览</h1>
 
 <div class="row placeholders">
-    <div class="col-xs-6 col-sm-3 placeholder"  >
-        <img data-src="holder.js/200x200/auto/sky" class="img-responsive"
-             alt="200x200"
-             src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwMCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojZmZmO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEzcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjAweDIwMDwvdGV4dD48L3N2Zz4=">
-        <!--<div  id="bar-chart" ng-controller="BarCtrl">-->
-            <!--<div class="panel-heading">Bar Chart</div>-->
-                <!--<div class="panel-body">-->
-                    <!--<canvas id="bar" class="chart chart-bar" data="data" labels="labels" series="series"></canvas>-->
-                <!--</div>-->
-            <!--</div>-->
 
+    <div class="col-lg-4 col-sm-4 col-md-offset-1 placeholder" ng-controller="BarCtrlPro">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>今日项目统计</strong></div>
+            <div class="panel-body">
+                <canvas id="bar1" class="chart negative.chart-bar" data="data" labels="labels" series="series"></canvas>
+            </div>
+        </div>
+    </div>
 
-               <h4>码表1</h4>
-        <span class="text-muted">Something else</span>
+    <div class="col-lg-4 col-sm-4 col-md-offset-1 placeholder" ng-controller="BarCtrlWar">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>今日告警统计</strong></div>
+            <div class="panel-body">
+                <canvas id="bar2" class="chart negative.chart-bar" data="data" labels="labels" series="series"></canvas>
+            </div>
+        </div>
     </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-        <img data-src="holder.js/200x200/auto/vine" class="img-responsive"
-             alt="200x200"
-             src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwMCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojMUUyOTJDO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEzcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjAweDIwMDwvdGV4dD48L3N2Zz4=">
-        <h4>码表2</h4>
-        <span class="text-muted">Something else</span>
-    </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-        <img data-src="holder.js/200x200/auto/sky" class="img-responsive"
-             alt="200x200"
-             src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwMCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojZmZmO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEzcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjAweDIwMDwvdGV4dD48L3N2Zz4=">
-        <h4>码表3</h4>
-        <span class="text-muted">Something else</span>
-    </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-        <img data-src="holder.js/200x200/auto/vine" class="img-responsive"
-             alt="200x200"
-             src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzM5REJBQyI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwMCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojMUUyOTJDO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEzcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjAweDIwMDwvdGV4dD48L3N2Zz4=">
-        <h4>码表4</h4>
-        <span class="text-muted">Something else</span>
-    </div>
+
 </div>
+
 
 <h2 class="sub-header">人员列表
     <div class="row col-sm-2">
@@ -140,15 +123,6 @@
     </div>
 
 </div>
-
-
-<div class="col-lg-6 col-sm-12"  ng-controller="BarCtrl">
-    <!--<div class="panel panel-default">-->
-        <div class="panel-heading">Bar Chart</div>
-        <div class="panel-body">
-            <canvas id="bar" class="chart chart-bar" data="data" labels="labels" series="series"></canvas>
-        </div>
-    </div>
 
 
 </body>

@@ -8,7 +8,7 @@ var resourceWebRoot ="/eye/rest/";
 			 'UserServices',
 			 'MenuServices',
 			 'CommonControllers',
-			 'DataControllers',
+			 'LinesChart',
 
 
 
@@ -24,7 +24,8 @@ var resourceWebRoot ="/eye/rest/";
 			templateUrl : 'partials/personsettings.html'
 		}).when('/data', {
 			templateUrl : 'partials/data.html',
-			controller:'BarCtrl'
+			controller:'CPUTicksCtrl'
+
 		}).otherwise({
 			redirectTo : '/dashboard'
 		});

@@ -1,14 +1,26 @@
-
 <head lang="en">
     <meta charset="UTF-8">
-    <!--<link href="bootstrap.css" rel="stylesheet">-->
-</head>
-<div class="col-lg-6 col-sm-12" id="bar-chart" ng-controller="BarCtrl">
-    <div class="panel panel-default">
-        <div class="panel-heading">Bar Chart</div>
-        <div class="panel-body">
-            <canvas id="bar" class="chart chart-bar" data="data" labels="labels" series="series"></canvas>
+    <title>Charts</title>
+    </head>
+<body >
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 ng-scope" id="container-cpu" ng-controller="CPUTicksCtrl">
+            <div class="panel panel-default">
+                <div class="panel-heading">CPU使用记录</div>
+                <div class="panel-body">
+                    <div class="chart-container">
+                        <canvas width="523" height="261" style="width: 523px; height: 261px;"
+                                class="chart chart-line chart-xl ng-isolate-scope" data="data" options="options"
+                                labels="labels"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
+
+
+
+</div>
+</body>
