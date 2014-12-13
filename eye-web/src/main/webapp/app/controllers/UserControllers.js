@@ -1,6 +1,5 @@
 (function() {
-	var app = angular.module('UserControllers',[ ]);
-
+	var app = angular.module('UserControllers', []);
 	app.controller('UserController', [ '$scope', 'User',
 			function($scope, User) {
 				$scope.users = User.get();
@@ -12,7 +11,7 @@
                     User.updata($scope.users.data[0], function() {
                         alert("修改成功" );
                     });
-            }
+                };
 			} ]);
 
 	app.filter('userStatusFilter', function() {
@@ -25,12 +24,6 @@
 		}
 	});
 
-	//app.controller("BarCtrlPro", function ($scope) {
-	//	$scope.labels = ['','服务器','', '数据库',''];
-	//	$scope.data = [
-	//		[null,3,null,1,null]
-	//	];
-	//});
 	app.controller("BarCtrlPro", function ($scope) {
 
 		$scope.labels = ['','服务器','', '数据库',''];
@@ -46,5 +39,4 @@
 			[null,4,null,1,null]
 		];
 	});
-
 })();

@@ -8,9 +8,8 @@ var resourceWebRoot ="/eye/rest/";
 			 'UserServices',
 			 'MenuServices',
 			 'CommonControllers',
-			 'LinesChart',
-             'CommonControllers',
-             'ComputerControllers',
+                'ComputerControllers',
+                'ComputerServices',
                 'AlarmControllers',
                 'AlarmServices',
                 'AlarmindexControllers',
@@ -18,9 +17,8 @@ var resourceWebRoot ="/eye/rest/";
                 'HardwareControllers',
                 'HardwareServices',
                 'DatabaseControllers',
-                'DatabaseServices'
-
-
+                'DatabaseServices',
+                'LinesChart',
 			 ]);
 	
 	app.config([ '$routeProvider', function($routeProvider) {
@@ -28,22 +26,18 @@ var resourceWebRoot ="/eye/rest/";
 			templateUrl : 'partials/dashboard.html',
 			controller:'UserController'
 		}).when('/statistics', {
-            templateUrl : 'partials/statistics.html'
-        }).when('/data', {
-            templateUrl : 'partials/data.html'
+			templateUrl : 'partials/statistics.html'
         }).when('/alarms', {
             templateUrl : 'partials/alarms.html'
-        }).when('/alarmsettings', {
-            templateUrl : 'partials/alarmsettings.html'
         }).when('/personsettings', {
             templateUrl : 'partials/personsettings.html'
+        }).when('/alarmsettings', {
+            templateUrl : 'partials/alarmsettings.html'
         }).when('/test', {
             templateUrl : 'partials/test.html'
 		}).otherwise({
 			redirectTo : '/dashboard'
 		});
 	} ]);
-
-
 
 })();

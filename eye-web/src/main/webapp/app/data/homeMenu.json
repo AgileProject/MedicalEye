@@ -12,12 +12,7 @@
                 "url": "#/statistics"
             },
             {
-                "name": "数据分析",
-                "active": false,
-                "url": "#/data"
-            },
-            {
-                "name": "报警显示",
+                "name": "报警",
                 "active": false,
                 "url": "#/alarms"
             }
@@ -26,7 +21,7 @@
     {
         "menus": [
             {
-                "name": "告警设置",
+                "name": "报警设置",
                 "active": false,
                 "url": "#/alarmsettings"
             },
