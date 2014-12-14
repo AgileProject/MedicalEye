@@ -8,9 +8,11 @@ import cn.edu.seu.eye.module.base.dao.management.IAlarmindexDao;
 import cn.edu.seu.eye.module.base.entity.management.Alarmindex;
 import cn.edu.seu.eye.module.base.resource.AbstractService;
 import cn.edu.seu.eye.module.base.service.management.IAlarmindex;
+import com.iron.fast.beans.Criteria;
 import com.iron.fast.repository.IDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AlarmindexImpl extends AbstractService<Alarmindex> implements IAlarmindex{
@@ -21,5 +23,12 @@ public class AlarmindexImpl extends AbstractService<Alarmindex> implements IAlar
     @Override
     public IDao<Alarmindex> getIDao() {
         return alarmindexDao;
+    }
+
+
+    @Override
+    @Transactional
+    public void updateAlarmindex(Alarmindex alarmindex) {
+        alarmindexDao.update(alarmindex);
     }
 }

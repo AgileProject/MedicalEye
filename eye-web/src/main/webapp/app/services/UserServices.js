@@ -7,7 +7,7 @@
 
 	app.factory('User', [ '$resource', function($resource) {
         return $resource(resourceWebRoot+'system/users',{}, {
-            updata : {
+            update : {
                 method : 'put'
             }
         });

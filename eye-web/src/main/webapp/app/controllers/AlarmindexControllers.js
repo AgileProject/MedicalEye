@@ -7,5 +7,12 @@
     app.controller('AlarmindexController', [ '$scope', 'Alarmindex',
         function($scope, Alarmindex) {
             $scope.alarmindexs = Alarmindex.get();
-        } ]);
+            $scope.update = function () {
+                Alarmindex.update($scope.alarmindexs, function () {
+                    alert("修改成功");
+                });
+            };
+        }
+
+    ]);
 })();

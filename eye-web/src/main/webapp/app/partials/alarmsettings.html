@@ -42,8 +42,12 @@
                 </p>
             </div>
         </div>
+    </div>
+</form>
 
-        <div ng-controller="AlarmindexController">
+<form class="form-horizontal" role="form" ng-controller="AlarmindexController"
+      ng-submit="update()" name="indexchange">
+    <div class="form-group">
             <h4 class="panel-body"><span class="glyphicon glyphicon-cog">设置服务器告警指标</span></h4>
             <table class="table table-striped">
                 <thead>
@@ -105,7 +109,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </form>
 

@@ -7,4 +7,7 @@ import cn.edu.seu.eye.module.base.entity.management.Alarmindex;
 import cn.edu.seu.eye.module.base.resource.IService;
 
 public interface IAlarmindex extends IService<Alarmindex> {
+
+
+    void updateAlarmindex(Alarmindex alarmindex);
 }

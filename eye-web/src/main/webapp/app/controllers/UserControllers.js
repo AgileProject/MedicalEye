@@ -7,8 +7,8 @@
 					$scope.user = user;
 					$('#myModal').modal('show');
 				};
-                $scope.updata = function() {
-                    User.updata($scope.users.data[0], function() {
+                $scope.update = function() {
+                    User.update($scope.users.data[0], function() {
                         alert("修改成功" );
                     });
                 };
