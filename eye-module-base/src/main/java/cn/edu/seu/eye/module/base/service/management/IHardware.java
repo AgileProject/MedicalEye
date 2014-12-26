@@ -7,4 +7,6 @@ import cn.edu.seu.eye.module.base.resource.IService;
  * Created by ling on 2014/12/6.
  */
 public interface IHardware extends IService<Hardware>{
+
+
 }

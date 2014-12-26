@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * 系统用户
  */
+
 @Entity
 @Table(name = "SYS_USER")
 @JsonInclude(Include.NON_NULL)
@@ -64,6 +65,9 @@ public class User implements Serializable {
 	public void setUserRoleList(List<UserRole> userRoleList) {
 		this.userRoleList = userRoleList;
 	}
+
+
+
 	
 	public String getId() {
 		return this.id;

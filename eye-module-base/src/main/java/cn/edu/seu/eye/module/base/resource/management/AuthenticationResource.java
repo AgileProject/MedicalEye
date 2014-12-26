@@ -35,6 +35,7 @@ public class AuthenticationResource extends BaseResource {
 	@Autowired
 	private IPermission sysPermissionService;
 
+
 	/**
 	 * 
 	 * @param loginUser
