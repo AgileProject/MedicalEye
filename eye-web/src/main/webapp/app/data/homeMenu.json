@@ -14,8 +14,14 @@
             {
                 "name": "业务性能监控",
                 "active": false,
-                "url": "#"
+                "url": "#/propertyMonitor"
+            },
+            {
+                "name": "数据库性能监控",
+                "active": false,
+                "url": "#/chart"
             }
+
         ]
     },
     {

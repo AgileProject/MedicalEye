@@ -1,10 +1,10 @@
 (function() {
     var app = angular.module('ComputersControllers', []);
 
-    app.controller('ComputersController', [ '$scope', 'Computers',
-        function($scope, Computers) {
+    app.controller('ComputersController', [ '$scope', 'Computer',
+        function($scope, Computer) {
             //控制器属性
-            $scope.computers = Computers.get();
+            $scope.computers = Computer.get();
 
         } ]);
 

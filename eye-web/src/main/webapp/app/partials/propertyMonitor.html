@@ -1,0 +1,29 @@
+<meta charset="UTF-8">
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>电脑名称</th>
+            <th>更新时间</th>
+            <th>CPU使用率</th>
+            <th>CPU运行时间</th>
+            <th>进程数</th>
+            <th>内存使用率</th>
+            <th>硬盘使用率</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="hardware in hardwares.data">
+            <td>{{$index + 1}}</td>
+            <td>{{hardware.computerName}}</td>
+            <td>{{hardware.updataTime|date:'yyyy-MM-dd hh:mm:ss EEEE'}}</td>
+            <td>{{hardware.cpuUtilzation}}</td>
+            <td>{{hardware.cpuRuntime}}</td>
+            <td>{{hardware.processes}}</td>
+            <td>{{hardware.ramUsedpercent}}</td>
+            <td>{{hardware.diskUtilzation}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

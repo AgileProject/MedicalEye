@@ -9,7 +9,12 @@ var resourceWebRoot ="/eye/rest/";
 			 'MenuServices',
 			 'CommonControllers',
              'ComputersControllers',
-             'ComputersServices'
+             'ComputersServices',
+             'HardwareControllers',
+             'HardwareServices',
+             'ChartServices',
+             'LinesChart'
+
 			 ]);
 	
 	app.config([ '$routeProvider', function($routeProvider) {
@@ -17,9 +22,16 @@ var resourceWebRoot ="/eye/rest/";
 			templateUrl : 'partials/dashboard.html',
 			controller:'UserController'
 		}).when('/statistics', {
-			templateUrl : 'partials/statistics.html',
-            controller:'ComputersController'
-		}).otherwise({
+            templateUrl: 'partials/statistics.html',
+            controller: 'ComputersController'
+        }).when('/propertyMonitor',{
+            templateUrl:'partials/propertyMonitor.html',
+            controller:'HardwareController'
+        }).when('/chart', {
+            templateUrl:'partials/chart.html',
+            controller:'CPUTicksCtrl'
+            //controller:'RAMTicksCtrl'
+        }).otherwise({
 			redirectTo : '/dashboard'
 		});
 	} ]);
