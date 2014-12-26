@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 系统用户
@@ -22,8 +21,8 @@ public class Alarmindex implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "INDEXID", columnDefinition = "int|指标编号", length = 4, nullable = false)
-    private int indexid;
+    @Column(name = "ID", columnDefinition = "int|指标编号", length = 4, nullable = false)
+    private int id;
 
     @Column(name = "COMPUTER_NAME", columnDefinition = "VARCHAR2|主机名", length = 20, nullable = true)
     private String computerName;
@@ -67,12 +66,12 @@ public class Alarmindex implements Serializable {
     @Column(name = "DATABASE_RAM_HIGHALARM", columnDefinition = "float|数据库内存高级报警", length = 8, nullable = true)
     private float databaseRamHighalarm;
 
-    public int getIndexid() {
-        return indexid;
+    public int getId() {
+        return id;
     }
 
-    public void setIndexid(int indexid) {
-        this.indexid = indexid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getComputerName() {
@@ -188,10 +187,10 @@ public class Alarmindex implements Serializable {
     }
 
 
-    public static final String INDEXID="indexid";
+    public static final String ID="id";
     public static final String COMPUTER_NAME="computerName";
     public static final String CPU_LOWALARM="cpuLowalarm";
-    public static final String CPU_HIGHALARM="cpuhighalarm";
+    public static final String CPU_HIGHALARM="cpuHighalarm";
     public static final String RAM_LOWALARM="ramLowalarm";
     public static final String RAM_HIGHALARM="ramHighalarm";
     public static final String DISK_LOWALARM="diskLowalarm";
@@ -204,7 +203,8 @@ public class Alarmindex implements Serializable {
     public static final String DATABASE_RAM_LOWALARM="databaseRamLowalarm";
     public static final String DATABASE_RAM_HIGHALARM="databaseRamHighalarm";
 
-    public static final String[] All_FIELDS = new String[] { INDEXID, COMPUTER_NAME, CPU_LOWALARM, CPU_HIGHALARM, RAM_LOWALARM, RAM_HIGHALARM, DISK_LOWALARM, DISK_HIGHALARM, DATABASE_NAME, LINK_NUMB_LOWALARM, LINK_NUMB_HIGHALARM, DATABASE_SIZE_LOWALARM, DATABASE_SIZE_HIGHALARM, DATABASE_RAM_LOWALARM,DATABASE_RAM_HIGHALARM };
+    public static final String[] All_FIELDS = new String[] { ID, COMPUTER_NAME, CPU_LOWALARM, CPU_HIGHALARM, RAM_LOWALARM, RAM_HIGHALARM, DISK_LOWALARM, DISK_HIGHALARM, DATABASE_NAME, LINK_NUMB_LOWALARM, LINK_NUMB_HIGHALARM, DATABASE_SIZE_LOWALARM, DATABASE_SIZE_HIGHALARM, DATABASE_RAM_LOWALARM,DATABASE_RAM_HIGHALARM };
+    public static final String[] UPDATA_FIELDS = new String[] { COMPUTER_NAME, CPU_LOWALARM, CPU_HIGHALARM, RAM_LOWALARM, RAM_HIGHALARM, DISK_LOWALARM, DISK_HIGHALARM, DATABASE_NAME, LINK_NUMB_LOWALARM, LINK_NUMB_HIGHALARM, DATABASE_SIZE_LOWALARM, DATABASE_SIZE_HIGHALARM, DATABASE_RAM_LOWALARM,DATABASE_RAM_HIGHALARM };
 
 
 }

@@ -11,6 +11,7 @@ import cn.edu.seu.eye.module.base.service.management.IAlarm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.Collections;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -26,6 +27,7 @@ public class AlarmsResource extends BaseResource {
     @WithoutAuthentication
     public Result getAllAlarm(HttpServletRequest request) {
         List<Alarm> alarms = sysAlarmService.getList(buildCriteria(request, Alarm.All_FIELDS));
+        Collections.reverse(alarms);
         Result result = new Result(alarms);
         return result;
     }

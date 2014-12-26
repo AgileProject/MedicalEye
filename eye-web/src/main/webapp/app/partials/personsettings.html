@@ -46,10 +46,12 @@
 
             <div class="col-sm-5">
                 <label class="radio-inline">
-                    <input type="radio" name="EmailRadioOptions" id="inlineRadio1" value="发送邮件" ng-checked="users.data[0].sendEmail">是
+                    <input type="radio" name="EmailRadioOptions" id="sendEmailRadio" ng-value="true"
+                           ng-checked="users.data[0].sendEmail" ng-model="users.data[0].sendEmail">是
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" name="EmailRadioOptions" id="inlineRadio2" value="不发送发邮件" ng-checked="!users.data[0].sendEmail">否
+                    <input type="radio" name="EmailRadioOptions" id="sendEmailRadio" ng-value="false"
+                           ng-checked="!users.data[0].sendEmail" ng-model="users.data[0].sendEmail">否
                 </label>
 
             </div>
@@ -60,10 +62,12 @@
 
             <div class="col-sm-5">
                 <label class="radio-inline">
-                    <input type="radio" name="PhoneRadioOptions" id="inlineRadio3" value="发送短信" ng-checked="users.data[0].sendMessage">是
+                    <input type="radio" name="PhoneRadioOptions" id="sendMessageRadio" ng-value="true"
+                           ng-checked="users.data[0].sendMessage" ng-model="users.data[0].sendMessage">是
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" name="PhoneRadioOptions" id="inlineRadio4" value="不发送短信" ng-checked="!users.data[0].sendMessage">否
+                    <input type="radio" name="PhoneRadioOptions" id="sendMessageRadio" ng-value="false"
+                           ng-checked="!users.data[0].sendMessage" ng-model="users.data[0].sendMessage">否
                 </label>
             </div>
         </div>
@@ -76,6 +80,5 @@
     </form>
 
 </div>
-
 <!--<script>radiochecked("EmailRadioOptions",users.data[0].sendEmail)</script>-->
 </body>

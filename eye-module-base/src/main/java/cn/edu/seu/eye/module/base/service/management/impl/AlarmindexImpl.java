@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class AlarmindexImpl extends AbstractService<Alarmindex> implements IAlarmindex{
 
@@ -28,7 +30,7 @@ public class AlarmindexImpl extends AbstractService<Alarmindex> implements IAlar
 
     @Override
     @Transactional
-    public void updateAlarmindex(Alarmindex alarmindex) {
-        alarmindexDao.update(alarmindex);
+    public void updateAlarmindex(List<Alarmindex> alarmindex) {
+        alarmindexDao.batchUpdate(alarmindex, Alarmindex.UPDATA_FIELDS);
     }
 }

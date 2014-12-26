@@ -109,13 +109,16 @@
              <th>RAM利用率低级报警指标</th>
              <th>RAM利用率高级报警指标</th>
              <th>DISK利用率低级报警指标</th>
-             <th>DISK利用率高级报警指标</th>
+             <th> aaa {{alarmindexs.data.length}}</th>
          </tr>
          </thead>
          <tbody>
+
+
+
          <tr ng-repeat="alarmindex in alarmindexs.data">
 
-             <td>{{alarmindex.indexid}}</td>
+             <td>{{alarmindex.id}}</td>
              <td>{{alarmindex.computerName}}</td>
              <td>{{alarmindex.cpuLowalarm}}</td>
              <td>{{alarmindex.cpuHighalarm}}</td>

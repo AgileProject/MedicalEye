@@ -1,9 +1,11 @@
 
 
 
-<div class="table-responsive" >
-
-    <table class="table table-striped" ng-controller="AlarmController">
+<div class="table-responsive" ng-controller="AlarmController" >
+    <h2 class="sub-header">报警查询<div class="row col-sm-2">
+        <input type="text" class="form-control col-lg-1" placeholder="查找..." ng-model="searchAlarmText.$">
+    </div></h2>
+    <table class="table table-striped"  onload="setTimeout('alarmGetData()',20000)">
         <thead>
         <tr>
             <th>主机名</th>
@@ -24,6 +26,3 @@
     </table>
 </div>
 
-<!--<script language=JavaScript>-->
-    <!--self.opener.location.reload();-->
-<!--</script>-->

@@ -7,5 +7,9 @@
     app.controller('AlarmController', [ '$scope', 'Alarm',
         function($scope, Alarm) {
             $scope.alarms = Alarm.get();
+            $scope.alarmGetData= function () {
+                alert("修改成功");
+//                $scope.alarms = Alarm.get();
+            };
         } ]);
 })();

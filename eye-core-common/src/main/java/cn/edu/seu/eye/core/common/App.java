@@ -34,7 +34,7 @@ public class App
 //        Mail.send(smtp, from, to, subject, content, username, password);
 
 
-       Fetion.sendMsg(PHONE, PWD, TO, MSG);
+//       Fetion.sendMsg(PHONE, PWD, TO, MSG);
         }
 
     }

@@ -7,8 +7,9 @@
     app.controller('AlarmindexController', [ '$scope', 'Alarmindex',
         function($scope, Alarmindex) {
             $scope.alarmindexs = Alarmindex.get();
+            setTimeout('myrefresh()',2000)
             $scope.update = function () {
-                Alarmindex.update($scope.alarmindexs, function () {
+                Alarmindex.update($scope.alarmindexs.data, function () {
                     alert("修改成功");
                 });
             };

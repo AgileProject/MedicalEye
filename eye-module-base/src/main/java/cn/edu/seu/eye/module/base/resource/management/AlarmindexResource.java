@@ -42,7 +42,7 @@ public class AlarmindexResource extends BaseResource {
      */
     @RequestMapping(method = RequestMethod.PUT)
     public void update(@RequestBody List<Alarmindex> alarmindexs) {
-        sysAlarmindexService.batchUpdate(alarmindexs);
+        sysAlarmindexService.updateAlarmindex(alarmindexs);
     }
 
 }
