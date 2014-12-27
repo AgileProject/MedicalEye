@@ -1,0 +1,115 @@
+<div>
+    <ol class="breadcrumb">
+        <li><a href="#/system">所有服务器</a></li>
+        <li class="active">{{computerID}}</li>
+    </ol>
+
+    <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
+        <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;" ng-click="vm.activeTab = 1">系统运行状况</a></li>
+        <li ng-class="{active: vm.activeTab == 2}"><a href="javascript:;" ng-click="vm.activeTab = 2">系统配置信息</a></li>
+    </ul>
+
+    <div class="tab-content tab-bordered">
+        <div class="row" ng-show="vm.activeTab == 1">
+            <div class="col-lg-8 col-sm-12 ng-scope" id="container-cpu" ng-controller="CPUTicksCtrl">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">CPU使用记录</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas width="523" height="261" style="width: 523px; height: 261px;"
+                                    class="chart chart-line chart-xl ng-isolate-scope" data="data" options="options"
+                                    labels="labels"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">RAM使用记录</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas width="523" height="261" style="width: 523px; height: 261px;"
+                                    class="chart chart-line chart-xl ng-isolate-scope" data="data" options="options"
+                                    labels="labels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-12 ng-scope" id="container-ram" ng-controller="RAMTicksCtrl">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-bolt fa-fw"></i> Server Crashed!
+                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-warning fa-fw"></i> Server Not Responding
+                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
+                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-money fa-fw"></i> Payment Received
+                                    <span class="pull-right text-muted small"><em>Yesterday</em>
+                                    </span>
+                            </a>
+                        </div>
+                        <!-- /.list-group -->
+                        <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="tab-panel" ng-show="vm.activeTab == 2">
+            <table class="table" ng-controller="ComputerInfo">
+                <tbody>
+                <tr ng-repeat="information in informations">
+                    <td>{{information.id}}</td>
+                    <td>{{information.info}}</td>
+                </tr>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

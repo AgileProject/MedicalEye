@@ -8,7 +8,7 @@ var resourceWebRoot = "/eye/rest/";
             'UserServices',
             'MenuServices',
             'CommonControllers',
-            'LinesChart',
+            'DetailInfo',
             'SystemMonitor'
         ]);
 
@@ -16,10 +16,11 @@ var resourceWebRoot = "/eye/rest/";
         $routeProvider.when('/dashboard', {
             templateUrl: 'partials/dashboard.html',
             controller: 'UserController'
-        }).when('/statistics', {
-            templateUrl: 'partials/statistics.html',
+        }).when('/statistics/:computerID', {
+            templateUrl: 'partials/computer_detail_info.html',
             controller:'CPUTicksCtrl',
-            controller:'RAMTicksCtrl'
+            controller:'RAMTicksCtrl',
+            controller:'ShowComputerIDCtrl'
         }).when('/system', {
             templateUrl: 'partials/system_monitor.html',
             controller:'ComputerStateCtrl'

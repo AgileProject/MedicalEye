@@ -35,10 +35,13 @@
 </head>
 
 <body>
-    <h4 class="page-header">所有服务器</h4>
+<div>
+    <ol class="breadcrumb">
+        <li>所有服务器</li>
+    </ol>
 
     <table class="table" ng-controller="ComputerStateCtrl">
-        <thead>
+        <thead class="table_head">
         <tr>
             <th>主机名称</th>
             <th>IP地址</th>
@@ -49,13 +52,13 @@
         <tbody>
         <tr ng-repeat="computer in computers">
             <td>{{computer.name}}</td>
-            <td><a href="#/statistics">{{computer.ip}}</a></td>
+            <td><a href="#/statistics/computer{{computer.name}}">{{computer.ip}}</a></td>
             <td>{{computer.cpu}}</td>
             <td>{{computer.ram}}</td>
         </tr>
         </tr>
         </tbody>
     </table>
-
+</div>
 </body>
 
