@@ -1,28 +1,42 @@
-
-
-
-<div class="table-responsive" ng-controller="AlarmController" >
-    <h2 class="sub-header">报警查询<div class="row col-sm-2">
-        <input type="text" class="form-control col-lg-1" placeholder="查找..." ng-model="searchAlarmText.$">
-    </div></h2>
-    <table class="table table-striped"  onload="setTimeout('alarmGetData()',20000)">
-        <thead>
+<div class="table-responsive" ng-controller="AlarmController">
+    <h2 class="sub-header">报警查询
+        <div class="row col-sm-2">
+            <input type="text" class="form-control col-lg-1" placeholder="查找..." ng-model="searchAlarmText.$">
+        </div>
+    </h2>
+    <table class="table table-striped">
+        <thead class="row">
         <tr>
-            <th>主机名</th>
-            <th>报警时间</th>
-            <th>报警信息</th>
-            <th>报警级别</th>
+            <th class="col-lg-2">主机名</th>
+            <th class="col-lg-2">报警时间</th>
+            <th class="col-lg-6 alarmTextCenter">报警信息</th>
+            <th class="col-lg-1">报警级别</th>
         </tr>
         </thead>
-        <tbody>
-        <tr ng-repeat="alarm in alarms.data | filter:searchAlarmText"
-            ng-class="{alarmdanger:alarm.alarmLevel == 1, alarmwarning:alarm.alarmLevel == 0}">
-            <td>{{alarm.computerName}}</td>
-            <td>{{alarm.alarmTime |date: 'yyyy-MM-dd HH:mm' }}</td>
-            <td>{{alarm.alarmMessage}}</td>
-            <td>{{alarm.alarmLevel}}</td>
+        <tbody class="row">
+        <tr ng-repeat="alarm in alarms.data | filter:searchAlarmText | startFrom: currentPage * pageSize  | limitTo:pageSize"
+            ng-class="{alarmdanger:alarm.alarmLevel == 1, alarmwarning:alarm.alarmLevel == 0}"
+                >
+            <td class="col-lg-2">{{alarm.computerName}}</td>
+            <td class="col-lg-2">{{alarm.alarmTime |date: 'yyyy-MM-dd HH:mm' }}</td>
+            <td class="col-lg-6 alarmTextCenter">{{alarm.alarmMessage}}</td>
+            <td class="col-lg-1">{{alarm.alarmLevel}}</td>
         </tr>
         </tbody>
     </table>
+    <div class="row">
+        <div class="col-md-2">
+            <button  class="btn btn-primary btn-lg" ng-click="turnFirstPage()" ng-class="previousPageDisabled()">第一页</button>
+        </div>
+        <div class="col-md-2">
+            <button  class="btn btn-primary btn-lg" ng-click="previousPage()" ng-class="previousPageDisabled()">上一页</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary btn-lg" ng-click="nextPage()" ng-class="nextPageDisabled()">下一页</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary btn-lg" ng-click="turnLastPage()" ng-class="nextPageDisabled()">最后一页</button>
+        </div>
+    </div>
 </div>
 

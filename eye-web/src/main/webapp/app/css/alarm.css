@@ -30,3 +30,7 @@
 .table > tfoot > tr.alarmdanger > th {
     background-color: red;
 }
+
+.alarmTextCenter{
+    text-align: center;
+}

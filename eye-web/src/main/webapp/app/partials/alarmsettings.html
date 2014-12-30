@@ -1,58 +1,66 @@
-<h2 class="page-header">报警设置</h2>
+<div style="font-size: 24px">报警设置</div>
 
-<form class="form-horizontal" role="form">
+<!--<form class="form-horizontal" role="form">-->
+    <!--<div class="form-group">-->
+        <!--<div class="row">-->
+            <!--<h4 class="panel-body"><span class="glyphicon glyphicon-cog">设置监控选项</span></h4>-->
+
+            <!--<div>-->
+                <!--<p class="panel-body">-->
+                    <!--<label class="control-label">监控频率：</label>-->
+                    <!--<label for="1"> <input type="button" name="warnButton" class="btn btn-default " value="15分钟"-->
+                                           <!--id="1"></label>-->
+                    <!--<label for="2"> <input type="button" name="warnButton" class="btn btn-default" value="20分钟"-->
+                                           <!--id="2"></label>-->
+                    <!--<label for="3"> <input type="button" name="warnButton" class="btn btn-default" value="30分钟"-->
+                                           <!--id="3"></label>-->
+                    <!--<label for="4"> <input type="button" name="warnButton" class="btn btn-default" value="60分钟"-->
+                                           <!--id="4"></label>-->
+                <!--</p>-->
+            <!--</div>-->
+
+
+            <!--<div>-->
+                <!--<p class="panel-body">-->
+                    <!--<label class="control-label">连续告警：</label>-->
+                    <!--<label for="5"> <input type="button" name="warnButton1" class="btn btn-default " value="无"-->
+                                           <!--id="5"></label>-->
+                    <!--<label for="6"><input type="button" name="warnButton1" class="btn btn-default" value="15分钟"-->
+                                          <!--id="6"></label>-->
+                    <!--<label for="7"><input type="button" name="warnButton1" class="btn btn-default" value="20分钟"-->
+                                          <!--id="7"></label>-->
+                    <!--<label for="8"><input type="button" name="warnButton1" class="btn btn-default" value="30分钟"-->
+                                          <!--id="8"></label>-->
+                    <!--<label for="9"> <input type="button" name="warnButton1" class="btn btn-default " value="60分钟"-->
+                                           <!--id="9"></label>-->
+                    <!--<label for="10"> <input type="button" name="warnButton1" class="btn btn-default" value="90分钟"-->
+                                            <!--id="10"></label>-->
+                    <!--<label for="11"> <input type="button" name="warnButton1" class="btn btn-default" value="120分钟"-->
+                                            <!--id="11"></label>-->
+                    <!--<label for="12"><input type="button" name="warnButton1" class="btn btn-default" value="180分钟"-->
+                                           <!--id="12"></label>-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</form>-->
+
+<form class="form-horizontal" role="form" ng-controller="AlarmindexController" name="indexchange">
     <div class="form-group">
+            <h4 class="panel-body"><span class="glyphicon glyphicon-cog">设置告警指标</span></h4>
         <div class="row">
-            <h4 class="panel-body"><span class="glyphicon glyphicon-cog">设置监控选项</span></h4>
-
-            <div>
-                <p class="panel-body">
-                    <label class="control-label">监控频率：</label>
-                    <label for="1"> <input type="button" name="warnButton" class="btn btn-default " value="15分钟"
-                                           id="1"></label>
-                    <label for="2"> <input type="button" name="warnButton" class="btn btn-default" value="20分钟"
-                                           id="2"></label>
-                    <label for="3"> <input type="button" name="warnButton" class="btn btn-default" value="30分钟"
-                                           id="3"></label>
-                    <label for="4"> <input type="button" name="warnButton" class="btn btn-default" value="60分钟"
-                                           id="4"></label>
-                </p>
+            <div class="col-md-2">
+                <button  class="btn btn-primary btn-lg" ng-click="setCPUdisplay()">服务器</button>
             </div>
-
-
-            <div>
-                <p class="panel-body">
-                    <label class="control-label">连续告警：</label>
-                    <label for="5"> <input type="button" name="warnButton1" class="btn btn-default " value="无"
-                                           id="5"></label>
-                    <label for="6"><input type="button" name="warnButton1" class="btn btn-default" value="15分钟"
-                                          id="6"></label>
-                    <label for="7"><input type="button" name="warnButton1" class="btn btn-default" value="20分钟"
-                                          id="7"></label>
-                    <label for="8"><input type="button" name="warnButton1" class="btn btn-default" value="30分钟"
-                                          id="8"></label>
-                    <label for="9"> <input type="button" name="warnButton1" class="btn btn-default " value="60分钟"
-                                           id="9"></label>
-                    <label for="10"> <input type="button" name="warnButton1" class="btn btn-default" value="90分钟"
-                                            id="10"></label>
-                    <label for="11"> <input type="button" name="warnButton1" class="btn btn-default" value="120分钟"
-                                            id="11"></label>
-                    <label for="12"><input type="button" name="warnButton1" class="btn btn-default" value="180分钟"
-                                           id="12"></label>
-                </p>
+            <div class="col-md-2">
+                <button  class="btn btn-primary btn-lg" ng-click="setDBdisplay()">数据库</button>
             </div>
         </div>
-    </div>
-</form>
-
-<form class="form-horizontal" role="form" ng-controller="AlarmindexController"
-      ng-submit="update()" name="indexchange">
-    <div class="form-group">
-            <h4 class="panel-body"><span class="glyphicon glyphicon-cog">设置服务器告警指标</span></h4>
+        <div id="CPUAlarmindexs">
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>主机名</th>
+                    <th>服务器名</th>
                     <th>CPU利用率<br>低级报警指标</th>
                     <th>CPU利用率<br>高级报警指标</th>
                     <th>内存利用率<br>低级报警指标</th>
@@ -62,7 +70,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="alarmindex in alarmindexs.data">
+                <tr ng-repeat="alarmindex in alarmindexs.data | startFrom: currentPage * pageSize  | limitTo:pageSize">
 
                     <td>{{alarmindex.computerName}}</td>
                     <td><input type="text" style="width:60px;" ng-model="alarmindex.cpuLowalarm">%</td>
@@ -75,7 +83,8 @@
                 </tr>
                 </tbody>
             </table>
-            <h4 class="panel-body"><span class="glyphicon glyphicon-cog">设置数据库告警指标</span></h4>
+            </div>
+        <div id="DBAlarmindexs" style="display:none;">
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -89,7 +98,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="alarmindex in alarmindexs.data">
+                <tr ng-repeat="alarmindex in alarmindexs.data | startFrom: currentPage * pageSize  | limitTo:pageSize">
 
                     <td>{{alarmindex.databaseName}}</td>
                     <td><input type="text" style="width:60px;" ng-model="alarmindex.linkNumbLowalarm">%</td>
@@ -103,9 +112,22 @@
                 </tbody>
             </table>
 
+        </div>
             <div class="row">
+                <div class="col-md-2">
+                    <button  class="btn btn-primary btn-lg" ng-click="turnFirstPage()" ng-class="previousPageDisabled()">第一页</button>
+                </div>
+                <div class="col-md-2">
+                    <button  class="btn btn-primary btn-lg" ng-click="previousPage()" ng-class="previousPageDisabled()">上一页</button>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-lg" ng-click="nextPage()" ng-class="nextPageDisabled()">下一页</button>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-lg" ng-click="turnLastPage()" ng-class="nextPageDisabled()">最后一页</button>
+                </div>
                 <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary btn-lg">修改</button>
+                    <button class="btn btn-primary btn-lg" ng-click="update()">修改</button>
                 </div>
             </div>
         </div>
