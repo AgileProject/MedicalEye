@@ -14,11 +14,11 @@
 //
 //    } ]);
 
-    app.factory('hardwareData',['$http', '$q', function($http, $q){
+    app.factory('hardwareData',['$http', '$q', '$routeParams', function($http, $q, $routeParams){
         return{
             query:function() {
                 var deferred = $q.defer();
-                $http({method:'GET', url:resourceWebRoot+'system/hardwares/Thread:10Computer'}).
+                $http({method:'GET', url:resourceWebRoot+'system/hardwares/' + $routeParams.computerID}).
                     success(function(data,status,headers,config) {
                         deferred.resolve(data);
                     }).error(function(data,status,headers,config) {
@@ -36,7 +36,7 @@
         return{
             query:function() {
                 var deferred = $q.defer();
-                $http({method:'GET', url:resourceWebRoot+'system/hardwares/com11/cpuUtilzation'}).
+                $http({method:'GET', url:resourceWebRoot+'system/hardwares/com1/cpuUtilzation'}).
                     success(function(data,status,headers,config) {
                         deferred.resolve(data);
                     }).error(function(data,status,headers,config) {

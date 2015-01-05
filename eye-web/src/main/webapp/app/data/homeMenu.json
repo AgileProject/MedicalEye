@@ -9,19 +9,13 @@
             {
                 "name": "服务器性能监控",
                 "active": false,
-                "url": "#/statistics"
+                "url": "#/system"
             },
             {
                 "name": "业务性能监控",
                 "active": false,
                 "url": "#/propertyMonitor"
-            },
-            {
-                "name": "数据库性能监控",
-                "active": false,
-                "url": "#/chart"
             }
-
         ]
     },
     {

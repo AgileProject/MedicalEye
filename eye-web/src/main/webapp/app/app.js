@@ -12,25 +12,26 @@ var resourceWebRoot ="/eye/rest/";
              'ComputersServices',
              'HardwareControllers',
              'HardwareServices',
-             'ChartServices',
-             'LinesChart'
-
+             'DetailInfo',
+             'SystemMonitor',
+             'ChartServices'
 			 ]);
 	
 	app.config([ '$routeProvider', function($routeProvider) {
 		$routeProvider.when('/dashboard', {
 			templateUrl : 'partials/dashboard.html',
 			controller:'UserController'
-		}).when('/statistics', {
-            templateUrl: 'partials/statistics.html',
-            controller: 'ComputersController'
-        }).when('/propertyMonitor',{
+		}).when('/propertyMonitor',{
             templateUrl:'partials/propertyMonitor.html',
             controller:'HardwareController'
-        }).when('/chart', {
-            templateUrl:'partials/chart.html',
-            controller:'CPUTicksCtrl'
-            //controller:'RAMTicksCtrl'
+        }).when('/detail/:computerID', {
+            templateUrl: 'partials/computer_detail_info.html',
+            controller:'CPUTicksCtrl',
+            controller:'RAMTicksCtrl',
+            controller:'ShowComputerIDCtrl'
+        }).when('/system', {
+            templateUrl: 'partials/system_monitor.html',
+            controller:'ComputerStateCtrl'
         }).otherwise({
 			redirectTo : '/dashboard'
 		});

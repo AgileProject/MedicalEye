@@ -5,7 +5,6 @@
         function($scope, Hardware) {
             $scope.hardwares = Hardware.get();
             //控制器方法
-
         } ]);
 
 

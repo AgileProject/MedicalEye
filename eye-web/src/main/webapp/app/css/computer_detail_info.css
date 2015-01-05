@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+.table_padding{
+    padding: 10px 15px;
+}
+
+.tab-content.tab-bordered {
+    padding: 15px 0px;
+}
