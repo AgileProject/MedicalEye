@@ -18,4 +18,12 @@ public class UserDaoImpl extends AbstractDao<User> implements IUserDao {
 		String sql = "SELECT * FROM SYS_USER_ROLE where LOGIN_NAME = '" + loginName + "'";
 		return getMapList(sql, new Criteria());
 	}
+
+
+
+	@Override
+	public List<User> getUserList() {
+		String sql = "SELECT * FROM SYS_ALARMS";
+		return getList(sql, new Criteria());
+	}
 }

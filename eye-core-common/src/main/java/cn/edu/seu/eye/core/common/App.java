@@ -8,7 +8,7 @@ package cn.edu.seu.eye.core.common;
 
 import java.io.IOException;//用于发短信
 
-import org.apache.commons.httpclient.HttpException;//用于发短信
+//import org.apache.commons.httpclient.HttpException;//用于发短信
 
 public class App
 {
@@ -17,7 +17,7 @@ public class App
     private static String PWD = "dl871213";
     private static String TO = "15150423480";
     private static String MSG = "你好：Hello World!";
-    public static void main( String[] args ) throws HttpException, IOException
+    public static void main( String[] args ) throws IOException
     {
         System.out.println( "Hello World!" );
         System.out.println("This is a try ");

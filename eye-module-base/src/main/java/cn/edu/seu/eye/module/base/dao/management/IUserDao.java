@@ -9,4 +9,5 @@ import java.util.Map;
 public interface IUserDao extends IDao<User> {
 
 	List<Map<String, Object>> getUserRoleMapListByUser(String loginName);
+	public List<User> getUserList();
 }

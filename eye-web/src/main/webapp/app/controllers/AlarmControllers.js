@@ -29,7 +29,7 @@
 
             // 设置分页参数
             $scope.currentPage = 0;
-            $scope.pageSize = 15;
+            $scope.pageSize = 8;
             //获取页数
             $scope.numberOfPages = function () {
                 return Math.ceil($scope.alarms.data.length / $scope.pageSize)-1;

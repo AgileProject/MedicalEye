@@ -1,4 +1,4 @@
-package cn.edu.seu.eye.core.common;
+package cn.edu.seu.eye.module.base.utils;
 
 /**
  * Created by DL on 2014/12/14.

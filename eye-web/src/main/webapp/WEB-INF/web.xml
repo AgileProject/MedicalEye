@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>cn.edu.seu.eye.web.MyServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+        <!--<strong><load-on-startup>0</load-on-startup></strong>-->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 </web-app>
