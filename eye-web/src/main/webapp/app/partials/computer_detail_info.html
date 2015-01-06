@@ -4,9 +4,9 @@
         <li class="active">{{computerID}}</li>
     </ol>
 
-    <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
-        <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;" ng-click="vm.activeTab = 1">系统运行状况</a></li>
-        <li ng-class="{active: vm.activeTab == 2}"><a href="javascript:;" ng-click="vm.activeTab = 2">系统配置信息</a></li>
+    <ul class="nav nav-tabs" ng-init="vm.activeTab = 1">
+        <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;" ng-click="vm.activeTab = 1">运行状况</a></li>
+        <li ng-class="{active: vm.activeTab == 2}"><a href="javascript:;" ng-click="vm.activeTab = 2">历史信息</a></li>
     </ul>
 
     <div class="tab-content tab-bordered">
@@ -44,14 +44,13 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                        <i class="fa fa-bell fa-fw"></i>当前使用信息
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body" ng-controller="HardwareInfoCtrl">
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>序号</th>
                                 <th>电脑名称</th>
                                 <th>更新时间</th>
                                 <th>CPU使用率</th>
@@ -63,9 +62,8 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>1</td>
                                 <td>{{hardwares.data.computerName}}</td>
-                                <td>{{hardwares.data.updataTime|date:'yyyy-MM-dd hh:mm:ss EEEE'}}</td>
+                                <td>{{hardwares.data.updataTime|date:'MM-dd hh:mm:ss'}}</td>
                                 <td>{{hardwares.data.cpuUtilzation}}</td>
                                 <td>{{hardwares.data.cpuRuntime}}</td>
                                 <td>{{hardwares.data.processes}}</td>
@@ -84,16 +82,37 @@
             </div>
         </div>
 
+
+
         <div class="tab-panel" ng-show="vm.activeTab == 2">
-            <table class="table" ng-controller="ComputerInfo">
-                <tbody>
-                <tr ng-repeat="information in informations">
-                    <td>{{information.id}}</td>
-                    <td>{{information.info}}</td>
-                </tr>
-                </tr>
-                </tbody>
-            </table>
+                <table class="table table-striped" ng-controller="ComputerInfo">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>电脑名称</th>
+                        <th>更新时间</th>
+                        <th>CPU使用率</th>
+                        <th>CPU运行时间</th>
+                        <th>进程数</th>
+                        <th>内存使用率</th>
+                        <th>硬盘使用率</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="hardware in hardwares.data">
+                        <td>{{$index + 1}}</td>
+                        <td>{{hardware.computerName}}</td>
+                        <td>{{hardware.updataTime|date:'yyyy-MM-dd hh:mm:ss EEEE'}}</td>
+                        <td>{{hardware.cpuUtilzation}}</td>
+                        <td>{{hardware.cpuRuntime}}</td>
+                        <td>{{hardware.processes}}</td>
+                        <td>{{hardware.ramUsedpercent}}</td>
+                        <td>{{hardware.diskUtilzation}}</td>
+                    </tr>
+                    </tbody>
+                </table>
         </div>
+
+
     </div>
 </div>

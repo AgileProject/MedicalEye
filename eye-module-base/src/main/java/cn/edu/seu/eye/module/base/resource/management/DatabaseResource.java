@@ -41,10 +41,10 @@ public class DatabaseResource extends BaseResource {
 	public Result getDataByComputerName(@PathVariable("computerName") String computerName ) {
 		List<Database> databases = sysDatabaseService.getListWithDetail(new Criteria(Database.COMPUTER_NAME, OP.EQ, computerName),
 				new Order(Database.COMPUTER_NAME).desc(Database.UPDATA_TIME));
-		Database database = databases.get(0);
 
-		if ( database != null) {
-			return new Result( database);
+
+		if ( databases != null) {
+			return new Result( databases);
 		}else {
 			throw new RuntimeException();
 		}

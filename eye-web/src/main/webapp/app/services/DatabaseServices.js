@@ -5,7 +5,7 @@
 (function() {
     var app = angular.module('DatabaseServices', [ 'ngResource' ]);
 
-    app.factory('Database', [ '$resource', function($resource) {
-        return $resource(resourceWebRoot+'system/databases')
+    app.factory('Database', [ '$resource','$routeParams', function($resource, $routeParams) {
+        return $resource(resourceWebRoot+'system/databases/'+$routeParams.computerID)
     } ]);
 })();

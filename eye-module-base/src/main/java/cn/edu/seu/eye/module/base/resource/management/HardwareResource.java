@@ -52,7 +52,39 @@ public class HardwareResource extends BaseResource {
 		}else {
 			throw new RuntimeException();
 		}
+
+//		if (hardwares != null) {
+//			return new Result(hardwares);
+//		}else {
+//			throw new RuntimeException();
+//		}
 	}
+
+
+
+	@RequestMapping(value = "/all/{computerName}")
+	public Result getAllHardwareByComputerName(@PathVariable("computerName") String computerName ) {
+		List<Hardware> hardwares = sysHardwareServce.getListWithDetail(new Criteria(Hardware.COMPUTER_NAME, OP.EQ, computerName),
+				new Order(Hardware.COMPUTER_NAME).desc(Hardware.UPDATA_TIME));
+
+//		Result result = new Result(hardwares);
+//		return result;
+
+//		Hardware hardware = hardwares.get(0);
+//
+//		if (hardware != null) {
+//			return new Result(hardware);
+//		}else {
+//			throw new RuntimeException();
+//		}
+
+		if (hardwares != null) {
+			return new Result(hardwares);
+		}else {
+			throw new RuntimeException();
+		}
+	}
+
 
 	@RequestMapping(value = "/{computerName}/{utilzation}")
 	public Result getDataByComputerName(@PathVariable String computerName, @PathVariable String utilzation) {

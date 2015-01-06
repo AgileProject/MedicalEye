@@ -3,18 +3,18 @@
         "menus": [
             {
                 "name": "今日概述",
-                "active": true,
+                "active": false,
                 "url": "#/dashboard"
             },
             {
-                "name": "服务器性能监控",
-                "active": false,
+                "name": "硬件性能监控",
+                "active": true,
                 "url": "#/system"
             },
             {
-                "name": "业务性能监控",
+                "name": "数据库性能监控",
                 "active": false,
-                "url": "#/propertyMonitor"
+                "url": "#/databaseMonitor"
             }
         ]
     },

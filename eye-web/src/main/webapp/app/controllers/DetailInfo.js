@@ -4,21 +4,30 @@
 (function () {
     var app = angular.module("DetailInfo", ["chart.js", "ui.bootstrap"]);
 
-    app.controller('HardwareInfoCtrl', [ '$scope', 'Hardware',
-        function($scope, Hardware) {
-            $scope.hardwares = Hardware.get();
+    app.controller('HardwareInfoCtrl', [ '$scope', 'hardwareData', '$interval',
+        function($scope, hardwareData, $interval) {
+            $interval(function () {
+                getHardwareData();
+            }, 1000);
+
+            function getHardwareData() {
+                var promise = hardwareData.query();
+                promise.then(function(data) {
+                    $scope.hardwares = data;
+                }, function(data) {
+                    $scope.hardwares = {error: '数据不存在'};
+                });
+            }
+//            $scope.hardwares = Hardware.get();
         } ]);
 
     app.controller('ctrl.show.tab', function ($scope) {
         var vm = $scope.vm = {};
     });
 
-    app.controller("ComputerInfo", ['$scope', function ($scope) {
-        $scope.informations = [];
-
-        for (var i = 0; i < 3; i++) {
-            $scope.informations.push({id: i, info: "Computer" + i});
-        }
+    app.controller("ComputerInfo", ['$scope','Hardware',
+        function ($scope, Hardware) {
+            $scope.hardwares = Hardware.get();
     }]);
 
     app.controller("TimeCtrl", function ($scope) {
@@ -51,11 +60,20 @@
         $scope.labels = initLabel(maximum);
         $scope.options = {
             animation: false,
-            showScale: false,
+            showScale: true,
             showTooltips: false,
             pointDot: false,
-            datasetStrokeWidth: 0.5
+            datasetStrokeWidth: 1,
+            scaleOverride: true,
+            // Number - The number of steps in a hard coded scale
+            scaleSteps: 10,
+            // Number - The value jump in the hard coded scale
+            scaleStepWidth: 10,
+            // Number - The scale starting value
+            scaleStartValue: 0
         };
+
+
 
         // Update the dataset at 25FPS for a smoothly-animating chart
         $interval(function () {
@@ -90,10 +108,17 @@
         $scope.labels = initLabel(maximum);
         $scope.options = {
             animation: false,
-            showScale: false,
+            showScale: true,
             showTooltips: false,
             pointDot: false,
-            datasetStrokeWidth: 0.5
+            datasetStrokeWidth: 1,
+            scaleOverride: true,
+            // Number - The number of steps in a hard coded scale
+            scaleSteps: 10,
+            // Number - The value jump in the hard coded scale
+            scaleStepWidth: 10,
+            // Number - The scale starting value
+            scaleStartValue: 0
         };
 
         // Update the dataset at 25FPS for a smoothly-animating chart

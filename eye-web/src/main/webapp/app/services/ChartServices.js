@@ -30,8 +30,6 @@
         };
     }]);
 
-
-
     app.factory('cpuUtilzation',['$http', '$q', function($http, $q){
         return{
             query:function() {
