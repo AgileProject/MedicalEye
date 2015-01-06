@@ -3,15 +3,15 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+<display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>MyServlet</servlet-name>
         <servlet-class>cn.edu.seu.eye.web.MyServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
-        <!--<strong><load-on-startup>0</load-on-startup></strong>-->
+        &lt;!&ndash;<strong><load-on-startup>0</load-on-startup></strong>&ndash;&gt;
     </servlet>
     <servlet-mapping>
         <servlet-name>MyServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/servlet/*</url-pattern>
     </servlet-mapping>
 </web-app>
