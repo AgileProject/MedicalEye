@@ -7,9 +7,14 @@
                 "url": "#/dashboard"
             },
             {
-                "name": "统计报表",
+                "name": "硬件性能监控",
                 "active": false,
-                "url": "#/statistics"
+                "url": "#/system"
+            },
+            {
+                "name": "数据库性能监控",
+                "active": false,
+                "url": "#/databaseMonitor"
             },
             {
                 "name": "报警",

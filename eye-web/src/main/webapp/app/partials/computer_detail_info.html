@@ -1,0 +1,136 @@
+<div>
+    <ol class="breadcrumb">
+        <li><a href="#/system">所有服务器</a></li>
+        <li class="active">{{computerID}}</li>
+    </ol>
+
+    <ul class="nav nav-tabs" ng-init="vm.activeTab = 1">
+        <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;" ng-click="vm.activeTab = 1">运行状况</a></li>
+        <li ng-class="{active: vm.activeTab == 2}"><a href="javascript:;" ng-click="vm.activeTab = 2">历史信息</a></li>
+    </ul>
+
+    <div class="tab-content tab-bordered">
+        <div class="row" ng-show="vm.activeTab == 1">
+            <div class="col-lg-8 col-sm-12 ng-scope">
+                <div id="container-cpu" ng-controller="CPUTicksCtrl">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">CPU使用记录</div>
+                        <div class="panel-body">
+                            <div class="chart-container">
+                                <canvas width="523" height="261" style="width: 523px; height: 261px;"
+                                        class="chart chart-line chart-xl ng-isolate-scope" data="data" options="options"
+                                        labels="labels"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="container-ram" ng-controller="RAMTicksCtrl">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">RAM使用记录</div>
+                    <div class="panel-body">
+                        <div class="chart-container">
+                            <canvas width="523" height="261" style="width: 523px; height: 261px;"
+                                    class="chart chart-line chart-xl ng-isolate-scope" data="data" options="options"
+                                    labels="labels"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+            <div class="col-lg-4 col-sm-12 ng-scope">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bell fa-fw"></i>当前使用信息
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="list-group" ng-controller="HardwareInfoCtrl">
+                            <p class="list-group-item">
+                                <i class="fa fa-comment fa-fw"></i> 电脑名称
+                                    <span class="pull-right text-muted small">
+                                        <em>{{hardwares.data.computerName}}</em>
+                                    </span>
+                            </p>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-twitter fa-fw"></i> 更新时间
+                                    <span class="pull-right text-muted small">
+                                        <em>{{hardwares.data.updataTime|date:'yyyy-MM-dd hh:mm:ss EEEE'}}</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-envelope fa-fw"></i> CPU使用率
+                                    <span class="pull-right text-muted small">
+                                        <em>{{hardwares.data.cpuUtilzation}}</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-tasks fa-fw"></i> CPU运行时间
+                                    <span class="pull-right text-muted small">
+                                        <em>{{hardwares.data.cpuRuntime}}</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-upload fa-fw"></i> 进程数
+                                    <span class="pull-right text-muted small">
+                                        <em>{{hardwares.data.processes}}</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-bolt fa-fw"></i> 内存使用率
+                                    <span class="pull-right text-muted small">
+                                        <em>{{hardwares.data.ramUsedpercent}}</em>
+                                    </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-warning fa-fw"></i> 硬盘使用率
+                                    <span class="pull-right text-muted small">
+                                        <em>{{hardwares.data.diskUtilzation}}</em>
+                                    </span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+        <div class="tab-panel" ng-show="vm.activeTab == 2">
+                <table class="table table-striped" ng-controller="ComputerInfo">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>电脑名称</th>
+                        <th>更新时间</th>
+                        <th>CPU使用率</th>
+                        <th>CPU运行时间</th>
+                        <th>进程数</th>
+                        <th>内存使用率</th>
+                        <th>硬盘使用率</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="hardware in hardwares.data">
+                        <td>{{$index + 1}}</td>
+                        <td>{{hardware.computerName}}</td>
+                        <td>{{hardware.updataTime|date:'yyyy-MM-dd hh:mm:ss EEEE'}}</td>
+                        <td>{{hardware.cpuUtilzation}}</td>
+                        <td>{{hardware.cpuRuntime}}</td>
+                        <td>{{hardware.processes}}</td>
+                        <td>{{hardware.ramUsedpercent}}</td>
+                        <td>{{hardware.diskUtilzation}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+
+
+    </div>
+</div>

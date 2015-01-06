@@ -1,0 +1,23 @@
+<meta charset="UTF-8">
+<div class="table-responsive">
+    <ol class="breadcrumb">
+        <li>所有电脑上数据库信息</li>
+    </ol>
+    <table class="table table-striped"  ng-controller="ComputerStateCtrl">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>电脑名称</th>
+            <th>数据库信息</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="computer in computers.data">
+            <td>{{$index + 1}}</td>
+            <td><a href="#/databasedetail/{{computer.computerName}}">{{computer.computerName}}</a></td>
+            <td>{{computer.computerDb}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

@@ -18,7 +18,7 @@
             ng-class="{alarmdanger:alarm.alarmLevel == 1, alarmwarning:alarm.alarmLevel == 0}"
                 >
             <td class="col-lg-2">{{alarm.computerName}}</td>
-            <td class="col-lg-2">{{alarm.alarmTime |date: 'yyyy-MM-dd HH:mm' }}</td>
+            <td class="col-lg-2">{{alarm.alarmTime |date: 'yyyy-MM-dd HH:mm:ss' }}</td>
             <td class="col-lg-6 alarmTextCenter">{{alarm.alarmMessage}}</td>
             <td class="col-lg-1">{{alarm.alarmLevel}}</td>
         </tr>

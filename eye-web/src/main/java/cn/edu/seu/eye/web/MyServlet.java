@@ -14,7 +14,7 @@ import java.util.TimerTask;
 import java.io.IOException;
 
 public class MyServlet extends HttpServlet {
-//    private IAlarm alarm;
+    private IAlarm alarm = new AlarmImpl();
     private java.util.Timer timer;
 
     @Override
@@ -39,7 +39,7 @@ public class MyServlet extends HttpServlet {
                     public void run() {
                         //todo
 //                        System.out.println("自动加载启动.");
-//                            alarm.sendAlarm();
+                            alarm.sendAlarm();
                     }
                 }, 0, 10 * 1000);//10秒钟执行一次
 

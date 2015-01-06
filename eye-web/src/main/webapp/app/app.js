@@ -19,14 +19,31 @@ var resourceWebRoot ="/eye/rest/";
                 'DatabaseControllers',
                 'DatabaseServices',
                 'LinesChart',
+                'DetailInfo',
+                'SystemMonitor',
+                'ChartServices'
 			 ]);
 	
 	app.config([ '$routeProvider', function($routeProvider) {
 		$routeProvider.when('/dashboard', {
 			templateUrl : 'partials/dashboard.html',
 			controller:'UserController'
-		}).when('/statistics', {
-			templateUrl : 'partials/statistics.html'
+		}).when('/system', {
+            templateUrl: 'partials/system_monitor.html',
+            controller:'ComputerStateCtrl'
+        }).when('/databaseMonitor', {
+            templateUrl: 'partials/databaseMonitor.html',
+            controller: 'ComputerStateCtrl'
+        }).when('/databasedetail/:computerID',{
+            templateUrl: 'partials/database_detail_info.html',
+            controller:  'DatabaseController',
+            controller:  'ShowComputerIDCtrl'
+        }).when('/detail/:computerID', {
+            templateUrl: 'partials/computer_detail_info.html',
+            controller:'CPUTicksCtrl',
+            controller:'RAMTicksCtrl',
+            controller:'ComputerInfo',
+            controller:'ShowComputerIDCtrl'
         }).when('/alarms', {
             templateUrl : 'partials/alarms.html'
         }).when('/personsettings', {

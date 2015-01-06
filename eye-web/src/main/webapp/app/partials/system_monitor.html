@@ -1,0 +1,30 @@
+<div>
+    <ol class="breadcrumb">
+        <li>所有电脑的硬件信息</li>
+    </ol>
+
+    <table class="table" ng-controller="ComputerStateCtrl">
+        <thead class="table_head">
+        <tr>
+            <th>序号</th>
+            <th>电脑名称</th>
+            <th>IP地址</th>
+            <th>操作系统</th>
+            <th>CPU信息</th>
+            <th>内存信息</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="computer in computers.data">
+            <td>{{$index + 1}}</td>
+            <td><a href="#/detail/{{computer.computerName}}">{{computer.computerName}}</a></td>
+            <td>{{computer.computerIp}}</td>
+            <td>{{computer.computerOs}}</td>
+            <td>{{computer.computerCpu}}</td>
+            <td>{{computer.computerRam}}</td>
+        </tr>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

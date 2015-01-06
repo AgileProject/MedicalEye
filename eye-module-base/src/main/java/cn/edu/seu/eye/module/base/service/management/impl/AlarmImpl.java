@@ -1,22 +1,19 @@
 package cn.edu.seu.eye.module.base.service.management.impl;
 
 import cn.edu.seu.eye.module.base.dao.management.IAlarmDao;
-import cn.edu.seu.eye.module.base.dao.management.impl.AlarmDaoImpl;
-import cn.edu.seu.eye.module.base.dao.management.impl.UserDaoImpl;
-import cn.edu.seu.eye.module.base.entity.management.Alarm;
 import cn.edu.seu.eye.module.base.dao.management.IUserDao;
+import cn.edu.seu.eye.module.base.entity.management.Alarm;
 import cn.edu.seu.eye.module.base.entity.management.User;
 import cn.edu.seu.eye.module.base.resource.AbstractService;
 import cn.edu.seu.eye.module.base.service.management.IAlarm;
+import cn.edu.seu.eye.module.base.utils.SendEmail;
+import cn.edu.seu.eye.module.base.utils.SendMessage;
 import com.iron.fast.repository.IDao;
-import org.apache.commons.httpclient.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import cn.edu.seu.eye.module.base.utils.SendMessage;
-import cn.edu.seu.eye.module.base.utils.SendEmail;
+
 import java.text.SimpleDateFormat;
-
-
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +23,7 @@ import java.util.List;
 public class AlarmImpl extends AbstractService<Alarm> implements IAlarm{
 
     @Autowired
-    private IAlarmDao alarmDao;
+    private IAlarmDao alarmDao ;
     @Autowired
     private IUserDao userDao;
 
@@ -35,13 +32,15 @@ public class AlarmImpl extends AbstractService<Alarm> implements IAlarm{
     public IDao<Alarm> getIDao() {
         return alarmDao;
     }
-
-
-
-    @Override
+//    @Override
     public void sendAlarm() {
-        List<Alarm> alarms = alarmDao.getAlarmList();
-        List<User> users = userDao.getUserList();
+//        IAlarmDao alarmDao1;
+//        IUserDao userDao1;
+        List<Alarm> alarms = new ArrayList<Alarm>();
+        alarms =  alarmDao.getAlarmList();
+        List<User> users =new ArrayList<User>();
+        users = userDao.getUserList();
+        System.out.print("hahahah");
         if (alarms.size()>alarmNum){
             for(int i=alarmNum;i<alarms.size();i++){
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
